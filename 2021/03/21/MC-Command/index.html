@@ -1,0 +1,487 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>Minecraft服务器常用命令 | FSP2020个人博客</title><meta name="keywords" content="我的世界"><meta name="author" content="FSP2020"><meta name="copyright" content="FSP2020"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Minecraft服务器常用命令"><meta name="application-name" content="Minecraft服务器常用命令"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="Minecraft服务器常用命令"><meta property="og:url" content="https://fsp2026.qzz.io/2021/03/21/MC-Command/index.html"><meta property="og:site_name" content="FSP2020个人博客"><meta property="og:description" content="使用Ctrl+F可以快速查找  使用Ctrl+D 可以收藏本页方便下次使用哦！  Banitem详细特性支持分组&amp;#x2F;个别玩家权限显示黑名单物品一条指令把你手中的物品添加到黑名单也可把禁用的物品从黑名单中删除控制台可用指令 clear,list 和help.支持带有附加值的物"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://zh.minecraft.wiki/images/Bedrock_Dedicated_Server_Icon.png?0b213"><meta property="article:author" content="FSP2020"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://zh.minecraft.wiki/images/Bedrock_Dedicated_Server_Icon.png?0b213"><meta name="description" content="使用Ctrl+F可以快速查找  使用Ctrl+D 可以收藏本页方便下次使用哦！  Banitem详细特性支持分组&amp;#x2F;个别玩家权限显示黑名单物品一条指令把你手中的物品添加到黑名单也可把禁用的物品从黑名单中删除控制台可用指令 clear,list 和help.支持带有附加值的物"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://fsp2026.qzz.io/2021/03/21/MC-Command/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: undefined,
+  diytitle: undefined,
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: undefined,
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.2.0/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.2.0/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'FSP2020个人博客',
+  title: 'Minecraft服务器常用命令',
+  postAI: '',
+  pageFillDescription: 'Banitem, Groupmanager(权限组), essential, Residence插件 领地插件, 起床战争, 地皮插件(PlotSquared）, 生成地皮教程 (按顺序输入), RichAutoMessage, OpWhiteList(OP白名单列表-硬核翻译😂), 公民2(NPC), 虚拟玩家在线, ChestCommands菜单教程, 浮空字插件 Holographic Displays使用可以快速查找使用可以收藏本页方便下次使用哦详细特性支持分组个别玩家权限显示黑名单物品一条指令把你手中的物品添加到黑名单也可把禁用的物品从黑名单中删除控制台可用指令和支持带有附加值的物品如通过给予权限来无视禁用如黑名单内的物品无法拾取也可无法合成指令查看帮助添加物品到黑名单后理由拉黑物品并说明理由理由拉黑该下的所有附属物品如羊毛移除黑名单的物品清除所有禁用物品显示禁用物品名单重载插件权限以下对号入座交互物品左键或右键物品破坏被物品方块放置被物品方块拾取被物品方块合成被物品方块包含以上所有权限是物品后面的附加值没有则不必填写如和权限组游戏内输入可以找到指令描述将用户加入到组如果不存在便创建文件使用方法用户组可选世界所需权限指令描述移除用户的配置并移动到默认组使用方法用户所需权限指令描述添加一个组到用户的分组列表使用方法用户组所需权限指令描述删除一个组从用户的分组列表使用方法用户组所需权限指令描述创建一个组使用方法组所需权限指令描述移除一个组所有成员移动到默认组使用方法组所需权限指令描述增加用户的权限使用方法用户权限所需权限指令描述移除用户的权限使用方法用户权限所需权限指令描述列出用户的全部权限使用方法用户所需权限指令描述查询用户是否具有权限以及它的由来使用方法用户权限所需权限指令描述增加组的权限使用方法组权限所需权限指令描述移除组的权限使用方法组权限所需权限指令描述列出组的全部权限使用方法组所需权限指令描述查询组是否具有权限以及它的由来使用方法组权限所需权限指令描述将组增加到组的继承列表使用方法组组所需权限指令描述将组移除出组的继承列表使用方法组组所需权限指令描述增加或者替换用户的一个变量值如前缀和后缀使用方法用户变量值所需权限指令描述移除用户的变量使用方法用户变量所需权限指令描述列出用户的全部变量如前缀和后缀使用方法用户所需权限指令描述验证用户的变量值以及它的由来使用方法用户变量所需权限指令描述增加或者替换组的一个变量值如前缀和后缀使用方法组变量值所需权限指令描述移除组的变量使用方法组变量所需权限指令描述列出组的全部变量如前缀和后缀使用方法组所需权限指令描述验证组的变量值以及它的由来使用方法组变量所需权限指令描述查询用户所属组使用方法用户所需权限指令描述创建用户的临时权限拷贝使用方法用户所需权限指令描述移除用户的临时权限拷贝使用方法用户所需权限指令描述列出所有使用进入超载模式的用户使用方法所需权限指令描述移出所有使用进入超载模式的用户使用方法所需权限指令描述保存所有权限信息使用方法所需权限指令描述重新加载正确的世界和配置使用方法世界所需权限指令描述列出可用的组使用方法所需权限指令描述保留用户当前权限并移动到更高一级的组使用方法用户组所需权限指令描述保留用户当前权限并移动到更低一级的组使用方法用户组所需权限指令描述当用户在线的时候打开关闭验证使用方法所需权限指令描述打开关闭自动保存使用方法所需权限指令描述查看可以选择的世界名使用方法所需权限指令描述选择世界执行下一个命令使用方法世界所需权限指令描述清除选择的世界下一个命令在当前世界执行使用方法所需权限指令描述列出世界存储用户组数据的每个文件路径使用方法世界所需权限命令别名作用输入格式生成一大型颗树破坏你看着的方块附魔手上的物品附魔类型输入查看等级查看设置给与一个玩家经验值玩家玩家经验值等级值恢复玩家饥饿度玩家不填默认为自己允许你修改一堆烟花参数大小时间值让某玩家飞行开启关闭玩家修改玩家的模式玩家给玩家一些物品可添加高级属性让某玩家不受伤害玩家把手上的物品戴到头上方块才有效把头上的物品拿下来恢复某玩家生命值玩家给你一个设置好的物品后面单独成篇给某玩家一个礼包礼包名称玩家名称不填为自己使手上的物品达到最大堆叠改变一个玩家的时间即他与其他玩家看到时间不同修复一个或所有物品给与一个玩家的头正版玩家名改变一个服务器的时间生成一颗树使一个物品得以无限使用玩家不填为自己打开工作台改变某玩家的速度速度值玩家不填为自己速度值玩家不填为自己经济指令命令别名作用输入格式某玩家的金钱数玩家名不填为自己显示财富排行榜页数不填为第一页给与拿走设置重置一个玩家的金钱数玩家名金钱数值给某玩家一定量的钱从你的账户里提取玩家金钱数值出售物品物品名数量值设置一个物品的价格物品名不填为手上的物品价格值查看一个物品的价格物品数量值常用指令命令别名作用输入格式设置是否为状态玩家不填为自己允许你打开并编辑一本书查看你的朝向查看你的海拔高度查看某玩家坐标不填为自己打开页数设定好的内容插件名搜索页数向在线的请求帮助信息忽略一个玩家玩家查阅与这个服务器有关的信息搜索物品物品查看在线的玩家用户组发送和查阅短信信息信息说你做出动作动作输出你的动作查看每日信息私聊某玩家玩家信息可带查看附近的玩家半径值玩家名半径值改变玩家的显示名绑定一个命令在你手上的物品绑定命令打开或关闭快速回复私聊消息信息查看一个玩家的原本的用户名即之前的名字玩家查看怎么去合成一个物品物品合成编号查看服务器规则页数查看一个玩家最后的下线时间及地点玩家改变一个怪物的类型延迟为什么后面有一个延迟我要去试下传说中的自杀显示一个玩家的信息管理与制裁命令别名作用输入格式手榴弹启动回档禁止一名玩家进入服务器玩家理由禁止一个进入服务器玩家发送公告信息可加使一个玩家着火玩家时间秒清空一个玩家的背包玩家玩家物品损伤值数量删除一个监狱监狱名查看某玩家的末影箱玩家回档或重载玩家熄灭一个玩家身上的火焰玩家发出一个火球查看一个服务器的使用信息查看别的玩家的背包玩家加任意字符查看装备监狱列表把一个玩家提出服务器玩家理由踢出所有非玩家理由杀死一枚玩家玩家向你看着的地方放闪电玩家伤害禁言某玩家玩家时间从天而降许多不破坏地形玩家测试消息可加不填显示呯移走世界的特定实体半径世界创建一个新监狱监狱名查看其它玩家的私人消息例如私聊附近讲话玩家生成怪物数量玩家使一个玩家执行一个指令该玩家需要权限玩家玩家内容使玩家强制讲话临时禁止一个玩家进入服务器玩家时间是否雷雨天气变更一个玩家的监狱状态玩家监狱名时间进监狱玩家时间出监狱取消一个玩家的禁止状态玩家取消禁止一个玩家名隐身状态玩家改变天气持续时间主城与设置命令别名作用输入格式设定出生点主城给一个用户组设定出生点主城用户组传送到主城玩家传送命令别名作用输入格式返回到上一传送点删除一个家家玩家家删除一个坐标点坐标传送到一个家家玩家家传送到你看着的地方设置一个家家玩家家建立一个新坐标点坐标点传送到最高的方块传送到一个玩家身边玩家玩家玩家请求传送到一个玩家身边玩家向所有人发生一个请求传送你某玩家身边来玩家同意玩家请求一个玩家传送到你身边来玩家传送所有人到你某玩家身边玩家拒绝将一个玩家传送到你身边玩家强行传送到某玩家无视拒绝传送玩家强行让某玩家传送到自己身边无视拒绝传送玩家传送到某坐标头左右偏转角度头上下倾斜角度开关其他玩家是否能传送到你玩家传送到坐标点坐标名玩家允许你传送到其他世界具体请查阅插件领地插件选择命令选择领地的长方体区域和都是从你当前位置为中心的距离你也可以用一个工具默认是木斧来选择地块选取一整个格数向你的前方延伸选区显示已选择区域的尺寸格数向你的前方移动选区把选区延伸到从天顶到地底创建命令领地名区域向叫做领地名的领地增加从其中去除或是替换区域可与同一领地内的区域重合领地名选择好区域后创建一个叫做领地名的领地领地名移除一个叫领地名的领地移除所有领地领地名子区域名在领地内创建一块子区域你必须是所有者才行信息命令领地名列出某领地的所有区域领地名列出某领地的所有区域以及他们的坐标显示你所在的领地领地名得到某领地的信息显示你拥有的领地显示所有领地显示重要的权限显示你所在领地的所有子区域显示插件版本权限命令领地名群组名权限设置某领地对于某群组的权限领地名黑名单忽略名单材质从某领地的黑名单忽略名单中增加移除某材质领地名显示某领地的黑名单忽略名单设置领地名玩家名权限设置某领地对于某玩家的权限领地名权限设置某领地的权限其他命令领地名重置某领地的权限设置领地名玩家名将某领地赠与某玩家你必须是领主且被赠予玩家在线预定领地许可清单的详细信息领地名信息设置进入退出某领地时候显示的信息领地名移除进入退出某领地时候的信息源领地名目标领地名复制源领地的权限设置至目标领地旧名称新名称重命名领地对于子空间旧名称必须全名新名称可以只写子空间名领地名旧名称新名称重命名某领地中某区域的名称领地名传送至某领地设置当前领地的传送点为你站立的地方将你从当前领地移出交易命令领地名更新显示更新一个领地的费用意义不明显示在售的所有领地领地名显示在售的某领地的信息领地名价格将某领地出售领地名将某领地下架领地名购买某领地领地名价格天数将某领地以价格天数出租并设置可否自动续期领地名设置某领地出租手否可自动续期领地名解除某领地的出租管理命令领地名天数设置领地的时间限制或不限时玩家名移除某玩家的所有领地领地名玩家名将某领地以交给某玩家领地名将某领地设置为服务器领地载入领地插件注在的任何改变都不会被还原你可以再更改过后想立即将新设置生效的时候使用此命令重载领地插件注将会还原为初始状态如果你在更改过设置请不要使用此命令查询物品的注以上命令不写领地名则为当前所在的领地起床战争为什么选择游戏大厅等待倒计时等级及项可配置的选项最多支持个队伍每个队伍不限人数支持自定义刷新点不只是铜铁和金选择队伍的界面控制友伤以及队友破坏脚下方块商店只需要一个村民并且完全可以配置新的商店可以更改世界轻松回档有颜色的玩家名蹦极服的游戏状态队聊和群聊多语言自带中文对于插件开发者的事件管理器观战团队箱子控制游戏时间游戏设置有许多命令支持使用和文件来统计更新检测器救援平台陷阱回城卷轴保护墙羊地图记录自定义游戏方块自动更新插件可以在游戏开始和结束时显示全屏文字悬浮计分板需要和几乎所有的事情都可以配置在个人的服务器测试过指令权限见简要教程首先导入或建筑你的起床战争地图使用指令游戏名字这里我推荐为英文在下方可以有变成中文的方法最小玩家数来新建一个游戏然后使用指令游戏名字与上方相同队伍名字这里就需要中文了限制字数为最少个字队伍颜色最大人数队伍颜色请在中找寻然后使用指令游戏名字队伍名字来为队伍设置出生点出生点会以你的当前坐标和面朝方向构建设置床之前需要先使用游戏名字方块名称来设置游戏方块即基地我不直接说游戏名字是因为我发现这样设置是不行的然后使用指令游戏名字队伍名字来为队伍设置床你可以指向或踩在床上来设置然后使用指令游戏名字铜铁金自定义来增加资源产出点会以你的脚所在的位置生成资源然后使用指令游戏名字游戏名字来设置起床战争游戏范围玩家不能超过此范围来游玩会以你的脚所在位置来计算范围然后使用指令游戏名字来设置游戏大厅大厅可以在任何地方但不要在游玩区域内使用指令游戏名字中文名字来为游戏命名为中文最后使用指令游戏名字来保存这个游戏然后你需要使起床战争插件重新载入一遍配置最后在你想要玩家加入游戏的地方贴一块牌子游戏名字英文名空空这样一个地图就完成设置了时间为什么玩家无法使用牌子快捷加入在服务器配置文件中把主城保护设置为即可如何使用自带的汉化文件在中把项中的改为然后即可其他欢迎提问队伍颜色权限权限允许设置和维护每一个游戏管理员复制代码权限允许玩家使用所有功能复制代码权限无复制代码权限让加入一个游戏中的比赛满人大厅将会踢一个随机的非玩家无复制代码权限允许玩家在游戏中使用其他指令复制代码权限允许玩家使用这个指令来显示其他玩家的统计数据复制代码权限允许玩家踢出其他游戏中的玩家类型这个命令重新加载配置文件和设置当您删除配置区域设置文件时他们将与当前插件版本的默认重新生成使用一个参数你可以选择什么应该被加载时查看参数找出你能够使用的参数注意当使用游戏参数或参数时所有的游戏都将被卸载所有玩家都将被踢出游戏由于商店被排除在一个额外的文件你可以使用商店作为参数来重新加载商店而不是配置文件权限参数可选参数是重新加载游戏是重新加载商店是重新加载区域是重新加载全部地皮插件生成地皮教程按顺序输入地皮高度设置为就好了地皮大小地皮下面的方块的一般都是泥土为如有需求可自定义地皮表面方块一般是草方块为没认领前围墙的默认是认领后围墙的默认是两个应该可以设置相同方块路面宽路面高设置就可以了路面的方块默认是石英块墙下面的方块默认是石头墙的高度一般是是否开启基岩世界名字不能中文或者世界名需要有多世界插件指令启动消息停止消息重新载入这个插件消息帮助显示所有的消息输入消息增加一条消息消息删除一条消息消息消息编辑一条消息消息前缀帮助显示所有前缀设置消息的前缀消息后缀帮助显示所有消息后缀设置后缀帮助说明显示每个消息的间隔设置每个消息的间隔帮助说明显示消息开始的时间设置开始的时间帮助说明显示启动时间设置启动时间帮助说明显示设置的随机消息设置随机消息显示此插件的相关信息显示插件的版本显示所有帮助权限白名单列表硬核翻译配置白名单创造白名单禁用物品黑名单卡创造后执行的命令玩家因卡创造而被系统封禁玩家因卡创造而被系统封禁玩家因卡创造而被系统封禁玩家因卡创造而被系统封禁玩家因卡创造而被系统封禁获得违规物品后执行的命令玩家因刷出物品而被封禁玩家因刷出物品而被封禁玩家因刷出物品而被封禁指令添加到白名单移除从白名单添加到创造白名单移除从创造白名单将单一物品子全部废掉一键移出查看列表重载配置权限让玩家可以拥有所有封禁物品子让玩家拥有子公民常用指令名字创建一个叫的皮肤会根据皮肤站上的名字显示皮肤名字选定一个选定之后才能进行删除或者编辑功能删除删除之前请选定删除所有设置年龄没什么用给设置新的名字切换一个的是否无敌状态可以打可以碰触是否受伤提示可以骑和控制用随意走动控制骑上查看帮助设置是否放在玩家列表让对附近的玩家说话秒会说一句话首先输入输入不要带号话的内容如我是认识你很高兴输入激活语句不带可以添加多种内容范围设置一个的寻路的范围如果你输入了就会进入编辑寻路系统左键打一下地面就会设置第一个寻路点打第二个就会设置第二个寻路点右键点地面就会取消上一次的寻路点设置完成后输入退出编辑可以给穿装备支持任何能穿的装备首先输入然后手里拿着装备右键即可卸下装备是用手右键点击就会脱掉所有装备编辑完成后输入退出编辑传送到的身边让传送到你的身边变化的头部暂时不清楚列表将固定到你站在的位置设置一个的死后重生的地点名字创建一个名字产生一个现有的如死了你想让他迅速复活就输入这个命令召唤所有显示基本的信息设置一个僵尸类型的设置一个马类型的设置一个爬行者类型的设置一个豹猫类型的设置一个狼类型的将所选的发送给发送者设置一个的职业暂时不清楚传送一个或玩家到另一个或玩家设置一个的主人切换重力是普通重力或者渐渐漂浮重力让的视线跟随着你一直看着你切换野怪是否打物种设置的物种有以下物种玩家猪牛羊马哞菇铁傀儡雪傀儡鱿鱼狼猫村民蝙蝠僵尸僵尸猪人骷髅爬行者蜘蛛洞穴蜘蛛巨人岩浆怪蠹虫史莱姆烈焰人凋零末影人女巫恶魂鸡凋零末影龙重命名使用进行说话有时候不太稳定切换可滤去更改保存的位置名字取消复活复制速度值改变的行走速度模式改变的模式权限管理权限权限虚拟玩家在线帮助锁定解锁锁定后将会踢出所有假玩家添加一个假玩家支持颜色代码输入后立即生效添加一个假玩家并且发送消息删除一个假玩家必须完整输入添加时的名称包括空格符号和颜色代码删除一个假玩家并且发送消息获取假玩家列表权限使用指令的权限显示假玩家将获得权限的玩家名变为红色忽略服务器锁定菜单教程准备工具插件由开发的树形图制作者正式版与可视的菜单下载可视的菜单当你打开程序的时候你就会了浮空字插件目前功能创建浮空的文本悬空的物品可以简单快速的使用为开发人员提供的简易只需要一个命令就可以将图片转换成全息影像你可以创建酷炫的动画效果字体图片使用代码可以创建闪烁字体支持任何的编码的特殊字符可以显示在线人数包括多个也支持支持使用教程显示所有的相关指令如何安装将你下载的丢入服务器的文件夹内重启你的服务器创建一个简单的全息影像当你在服务器是或者拥有相关权限的时候编号内容可以用字体代码创建一个全息影像并且第一行显示为内容编号内容添加内容到编号全息影像中的下一行编号行数移除编号的第行数内容创建一个从图片导入的全息影像首先你需要上传一张图片最好不要太大到插件文件夹目录下编号编号编号图片名称长宽例子注意长款最大为创建一个现实在线玩家个数的全息影像编号在线人数移除一个全息影像编号符号默认符号如何自定义符号打开按照格式一行一个进行添加选择一个符号点击我前往一个有帮助的网站找到代码按照格式添加将文本保存重载插件',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-23 19:22:38',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 8.1.1"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">FSP2020个人博客</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">音乐</div><span class="author-content-item-title">灵魂的碰撞💥</span></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/01/"><span class="card-archive-list-date">一月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/09/"><span class="card-archive-list-date">九月 2021</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/04/"><span class="card-archive-list-date">四月 2021</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/03/"><span class="card-archive-list-date">三月 2021</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/" itemprop="url">我的世界</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>我的世界</span></a></span></div></div><h1 class="post-title" itemprop="name headline">Minecraft服务器常用命令</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2021-03-21T05:07:33.000Z" title="发表于 2021-03-21 13:07:33">2021-03-21</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2023-02-23T11:22:38.822Z" title="更新于 2023-02-23 19:22:38">2023-02-23</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为China"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>China</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://fsp2026.qzz.io/2021/03/21/MC-Command/"><header><a class="post-meta-categories" href="/categories/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/" itemprop="url">我的世界</a><a href="/tags/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/" tabindex="-1" itemprop="url">我的世界</a><h1 id="CrawlerTitle" itemprop="name headline">Minecraft服务器常用命令</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">FSP2020</span><time itemprop="dateCreated datePublished" datetime="2021-03-21T05:07:33.000Z" title="发表于 2021-03-21 13:07:33">2021-03-21</time><time itemprop="dateCreated datePublished" datetime="2023-02-23T11:22:38.822Z" title="更新于 2023-02-23 19:22:38">2023-02-23</time></header><pre><code>         使用Ctrl+F可以快速查找  使用Ctrl+D 可以收藏本页方便下次使用哦！
+</code></pre>
+<h2 id="Banitem"><a href="#Banitem" class="headerlink" title="Banitem"></a>Banitem</h2><p>详细特性<br>支持分组&#x2F;个别玩家权限<br>显示黑名单物品<br>一条指令把你手中的物品添加到黑名单<br>也可把禁用的物品从黑名单中删除<br>控制台可用指令 clear,list 和help.<br>支持带有附加值的物品ID (如, 35:3, 35:7)<br>通过给予权限来无视禁用. (如, banitem.bypass.35:* or banitem.bypass.35:6)<br>黑名单内的物品无法拾取<br>也可无法合成</p>
+<p>指令<br>&#x2F;BanItem help<br>查看帮助<br>&#x2F;BanItem add<br>添加物品到黑名单<br>（1.4后）&#x2F;banitem add 理由     拉黑物品并说明理由  &#x2F;banitem addall 理由    拉黑该ID下的所有附属物品 如羊毛35:*<br>&#x2F;BanItem del<br>移除黑名单的物品<br>Instruction  for adding and deleting item from blacklistHold the item that you wish to ban or unban, and type the command.<br>&#x2F;BanItem clear<br>清除所有禁用物品<br>&#x2F;BanItem list<br>显示禁用物品名单<br>&#x2F;BanItem reload<br>重载插件</p>
+<p>权限<br>以下对号入座~</p>
+<p>Banitem.help<br>Banitem.add<br>Banitem.del<br>Banitem.clear<br>Banitem.list<br>BamItem.reload<br>Banitem.*<br>banitem.int.<itemid>:<data>           | 交互物品<br>banitem.click.<itemid>:<data>         | 左键或右键物品<br>banitem.break.<itemid>:<data>       | 破坏被ban物品&#x2F;方块<br>banitem.place.<itemid>:<data>        | 放置被ban物品&#x2F;方块<br>banitem.pickup.<itemid>:<data>      |拾取被ban物品&#x2F;方块<br>banitem.craft.<itemid>:<data>         |合成被ban物品&#x2F;方块<br>banitem.bypass.<itemid>:<data>               | 包含以上所有权限<br>(Data 是物品ID后面的附加值, 没有则不必填写, 如 35:4 和 1523:2000)</p>
+<h2 id="Groupmanager-权限组"><a href="#Groupmanager-权限组" class="headerlink" title="Groupmanager(权限组)"></a>Groupmanager(权限组)</h2><p>游戏内输入&#x2F;? groupmanager可以找到</p>
+<p> manuadd:<br>    指令描述: 将&lt;用户&gt;加入到&lt;组&gt;. (如果不存在便创建文件)<br>    使用方法: &#x2F;manuadd &lt;用户&gt; &lt;组&gt; | 可选 [世界]<br>    所需权限: groupmanager.manuadd<br>  manudel:<br>    指令描述: 移除&lt;用户&gt;的配置并移动到默认组.<br>    使用方法: &#x2F;manudel &lt;用户&gt;<br>    所需权限: groupmanager.manudel<br>  manuaddsub:<br>    指令描述: 添加一个&lt;组&gt;到&lt;用户&gt;的分组列表.<br>    使用方法: &#x2F;manuaddsub &lt;用户&gt; &lt;组&gt;<br>    所需权限: groupmanager.manuaddsub<br>  manudelsub:<br>    指令描述: 删除一个&lt;组&gt;从&lt;用户&gt;的分组列表.<br>    使用方法: &#x2F;manudelsub &lt;用户&gt; &lt;组&gt;<br>    所需权限: groupmanager.manudelsub<br>  mangadd:<br>    指令描述: 创建一个&lt;组&gt;.<br>    使用方法: &#x2F;mangadd &lt;组&gt;<br>    所需权限: groupmanager.mangadd<br>  mangdel:<br>    指令描述: 移除一个&lt;组&gt; (所有成员移动到默认组)<br>    使用方法: &#x2F;mangdel &lt;组&gt;<br>    所需权限: groupmanager.mangdel<br>  manuaddp:<br>    指令描述: 增加&lt;用户&gt;的&lt;权限&gt;.<br>    使用方法: &#x2F;manuaddp &lt;用户&gt; &lt;权限&gt;<br>    所需权限: groupmanager.manuaddp<br>  manudelp:<br>    指令描述: 移除&lt;用户&gt;的&lt;权限&gt;.<br>    使用方法: &#x2F;manudelp &lt;用户&gt; &lt;权限&gt;<br>    所需权限: groupmanager.manudelp<br>  manulistp:<br>    指令描述: 列出&lt;用户&gt;的全部权限.<br>    使用方法: &#x2F;manulistp &lt;用户&gt;<br>    所需权限: groupmanager.manulistp<br>  manucheckp:<br>    指令描述: 查询&lt;用户&gt;是否具有&lt;权限&gt;, 以及它的由来.<br>    使用方法: &#x2F;manucheckp &lt;用户&gt; &lt;权限&gt;<br>    所需权限: groupmanager.manucheckp<br>  mangaddp:<br>    指令描述: 增加&lt;组&gt;的&lt;权限&gt;.<br>    使用方法: &#x2F;mangaddp &lt;组&gt; &lt;权限&gt;<br>    所需权限: groupmanager.mangaddp<br>  mangdelp:<br>    指令描述: 移除&lt;组&gt;的&lt;权限&gt;.<br>    使用方法: &#x2F;mangdelp &lt;组&gt; &lt;权限&gt;<br>    所需权限: groupmanager.mangdelp<br>  manglistp:<br>    指令描述: 列出&lt;组&gt;的全部权限.<br>    使用方法: &#x2F;manglistp &lt;组&gt;<br>    所需权限: groupmanager.manglistp<br>  mangcheckp:<br>    指令描述: 查询&lt;组&gt;是否具有&lt;权限&gt;, 以及它的由来.<br>    使用方法: &#x2F;mangcheckp &lt;组&gt; &lt;权限&gt;<br>    所需权限: groupmanager.mangcheckp<br>  mangaddi:<br>    指令描述: 将&lt;组1&gt;增加到&lt;组2&gt;的继承列表.<br>    使用方法: &#x2F;mangaddi &lt;组1&gt; &lt;组2&gt;<br>    所需权限: groupmanager.mangaddi<br>  mangdeli:<br>    指令描述: 将&lt;组1&gt;移除出&lt;组2&gt;的继承列表.<br>    使用方法: &#x2F;mangdeli &lt;组1&gt; &lt;组2&gt;<br>    所需权限: groupmanager.mangdeli<br>  manuaddv:<br>    指令描述: 增加或者替换&lt;用户&gt;的一个&lt;变量&gt;&lt;值&gt; (如前缀和后缀).<br>    使用方法: &#x2F;manuaddv &lt;用户&gt; &lt;变量&gt; &lt;值&gt;<br>    所需权限: groupmanager.manuaddv<br>  manudelv:<br>    指令描述: 移除&lt;用户&gt;的&lt;变量&gt;.<br>    使用方法: &#x2F;manudelv &lt;用户&gt; &lt;变量&gt;<br>    所需权限: groupmanager.manudelv<br>  manulistv:<br>    指令描述: 列出&lt;用户&gt;的全部变量 (如前缀和后缀).<br>    使用方法: &#x2F;manulistv &lt;用户&gt;<br>    所需权限: groupmanager.manulistv<br>  manucheckv:<br>    指令描述: 验证&lt;用户&gt;的&lt;变量&gt;值, 以及它的由来.<br>    使用方法: &#x2F;manucheckv &lt;用户&gt; &lt;变量&gt;<br>    所需权限: groupmanager.manucheckv<br>  mangaddv:<br>    指令描述: 增加或者替换&lt;组&gt;的一个&lt;变量&gt;&lt;值&gt; (如前缀和后缀).<br>    使用方法: &#x2F;mangaddv &lt;组&gt; &lt;变量&gt; &lt;值&gt;<br>    所需权限: groupmanager.mangaddv<br>  mangdelv:<br>    指令描述: 移除&lt;组&gt;的&lt;变量&gt;.<br>    使用方法: &#x2F;mangdelv &lt;组&gt; &lt;变量&gt;<br>    所需权限: groupmanager.mangdelv<br>  manglistv:<br>    指令描述: 列出&lt;组&gt;的全部变量 (如前缀和后缀).<br>    使用方法: &#x2F;manglistv &lt;组&gt;<br>    所需权限: groupmanager.manglistv<br>  mangcheckv:<br>    指令描述: 验证&lt;组&gt;的&lt;变量&gt;值, 以及它的由来.<br>    使用方法: &#x2F;mangcheckv &lt;组&gt; &lt;变量&gt;<br>    所需权限: groupmanager.mangckeckv<br>  manwhois:<br>    指令描述: 查询&lt;用户&gt;所属组.<br>    使用方法: &#x2F;manwhois &lt;用户&gt;<br>    所需权限: groupmanager.manwhois<br>  tempadd:<br>    指令描述: 创建&lt;用户&gt;的临时权限拷贝.<br>    使用方法: &#x2F;tempadd &lt;用户&gt;<br>    所需权限: groupmanager.tempadd<br>  tempdel:<br>    指令描述: 移除&lt;用户&gt;的临时权限拷贝.<br>    使用方法: &#x2F;tempdel &lt;用户&gt;<br>    所需权限: groupmanager.tempdel<br>  templist:<br>    指令描述: 列出所有使用 &#x2F;tempadd 进入超载模式的用户.<br>    使用方法: &#x2F;templist<br>    所需权限: groupmanager.templist<br>  tempdelall:<br>    指令描述: 移出所有使用 &#x2F;tempadd 进入超载模式的用户.<br>    使用方法: &#x2F;tempdelall<br>    所需权限: groupmanager.tempdelall<br>  mansave:<br>    指令描述: 保存所有权限信息.<br>    使用方法: &#x2F;mansave<br>    所需权限: groupmanager.mansave<br>  manload:<br>    指令描述: 重新加载正确的[世界]和配置.<br>    使用方法: &#x2F;manload [世界]<br>    所需权限: groupmanager.manload<br>  listgroups:<br>    指令描述: 列出可用的组.<br>    使用方法: &#x2F;listgroups<br>    所需权限: groupmanager.listgroups<br>  manpromote:<br>    指令描述: 保留&lt;用户&gt;当前权限并移动到更高一级的&lt;组&gt;.<br>    使用方法: &#x2F;manpromote &lt;用户&gt; &lt;组&gt;<br>    所需权限: groupmanager.manpromote<br>  mandemote:<br>    指令描述: 保留&lt;用户&gt;当前权限并移动到更低一级的&lt;组&gt;.<br>    使用方法: &#x2F;mandemote &lt;用户&gt; &lt;组&gt;<br>    所需权限: groupmanager.mandemote<br>  mantogglevalidate:<br>    指令描述: 当用户在线的时候打开&#x2F;关闭验证.<br>    使用方法: &#x2F;mantogglevalidate<br>    所需权限: groupmanager.mantogglevalidate<br>  mantogglesave:<br>    指令描述: 打开&#x2F;关闭自动保存.<br>    使用方法: &#x2F;mantogglesave<br>    所需权限: groupmanager.mantogglesave<br>  manworld:<br>    指令描述: 查看可以选择的世界名<br>    使用方法: &#x2F;manworld<br>    所需权限: groupmanager.manworld<br>  manselect:<br>    指令描述: 选择世界执行下一个命令.<br>    使用方法: &#x2F;manselect &lt;世界&gt;<br>    所需权限: groupmanager.manselect<br>  manclear:<br>    指令描述: 清除选择的世界, 下一个命令在当前世界执行.<br>    使用方法: &#x2F;manclear<br>    所需权限: groupmanager.manclear<br>  mancheckw:<br>    指令描述: 列出&lt;世界&gt;存储(用户&#x2F;组)数据的每个文件路径.<br>    使用方法: &#x2F;mancheckw &lt;世界&gt;<br>    所需权限: groupmanager.mancheckw</p>
+<h2 id="essential"><a href="#essential" class="headerlink" title="essential"></a>essential</h2><p>命令	别名	作用	输入格式<br>bigtree	largetree	生成一大型颗树	&#x2F;bigtree &lt;tree\redwood\jungle&gt;<br>break	X	破坏你看着的方块	&#x2F;break<br>enchant	enchantment	附魔手上的物品	&#x2F;enchant [附魔类型（输入&#x2F;enchant查看）] [等级]<br>exp	xp	查看&#x2F;设置&#x2F;给与一个玩家经验值	&#x2F;exp [玩家]<br>&#x2F;exp &lt;show\set\give&gt; [玩家] [经验值\L&lt;等级（值）&gt;]<br>feed	eat	恢复玩家饥饿度	&#x2F;feed [玩家](不填默认为自己）<br>firework	X	允许你修改一堆烟花	&#x2F;firework &lt;参数&gt;<br>&#x2F;firework &lt;大小|时间&gt; [值] &#x2F;firework clear [c 1]<br>fly	X	让某玩家飞行(开启&#x2F;关闭）	&#x2F;fly [玩家] [on\off]<br>gamemode	gm..[c 2]	修改玩家的模式	&#x2F;gamemode [c\s\a\t\creative\survival\adventure\toggle] [玩家]<br>give	X	给玩家一些物品（可添加高级属性）	&#x2F;<command> <player> &lt;item\item:damage value&gt; [amount [enchant:level…]][c 3]<br>god	godmode, tgm	让某玩家不受伤害	&#x2F;god [玩家] [on\off]<br>hat	hand	把手上的物品戴到头上（方块才有效）\把头上的物品拿下来	&#x2F;hat [remove]<br>heal	X	恢复某玩家生命值	&#x2F;heal [玩家]<br>item	i	给你一个设置[c 4]好的物品	&#x2F;item &lt;item\item:damage value&gt;[amount [enchant:level…]]<br>（后面单独成篇）<br>kit	kits	给某玩家一个礼包	&#x2F;<command> [礼包名称] [玩家名称（不填为自己）]<br>more	X	使手上的物品达到最大堆叠	&#x2F;more<br>ptime	playertime	改变一个玩家的时间（即他与其他玩家看到时间不同）	&#x2F;ptime [list\reset\day\night\dawn\17:30\4pm\4000ticks] &lt;player*&gt;<br>repair	fix	修复一个或所有物品	&#x2F;repair [hand\all]<br>skull	playerskull,head	给与一个玩家的头	&#x2F;skull [正版玩家名]<br>time	day,night	改变一个服务器的时间	&#x2F;time [day\night\dawn\17:30\4pm\4000ticks] [worldname\all]<br>tree	X	生成一颗树	&#x2F;tree<br>&lt;tree\birch\redwood\redmushroom\brownmushroom\jungle\junglebush\swamp&gt;<br>unlimited	ul\unl	使一个物品得以无限使用	&#x2F;unlimited &lt;list\item\clear&gt; [玩家（不填为自己）]<br>workbench	wb,wbench	打开工作台	&#x2F;workbench<br>speed	flyspeed..[c 5]	改变某玩家的速度	&#x2F;speed &lt;速度（值）&gt; [玩家（不填为自己）]<br>&#x2F;<command> &lt;walk\fly&gt; &lt;速度（值）&gt; [玩家（不填为自己）]<br>经济指令<br>命令	别名	作用	输入格式<br>balance	bal,money	某玩家的金钱数	&#x2F;balance [玩家名（不填为自己）<br>balancetop	baltop	显示财富排行榜	&#x2F;balancetop [页数（不填为第一页）]<br>eco	economy	给与\拿走\设置\重置一个玩家的金钱数	&#x2F;eco &lt;give\take\reset&gt; &lt;玩家名&gt; [金钱数（值）]<br>pay	X	给某玩家一定量的钱（从你的账户里提取）[c 6]	&#x2F;pay &lt;玩家&gt; &lt;金钱数（值）&gt;<br>sell	X	出售物品	&#x2F;sell &lt;物品名\ID&gt; [数量（值）]<br>&#x2F;sell &lt;hand\invent\blocks&gt;<br>setworth	X	设置一个物品的价格	&#x2F;setworth [物品名\id（不填为手上的物品)] &lt;价格（值）&gt;<br>worth	price	查看一个物品的价格	&#x2F;worth [hand\all]<br>&#x2F;worth &lt;物品&gt; [数量（值）]<br>常用指令<br>命令	别名	作用	输入格式<br>afk	away	设置是否为AFK状态	&#x2F;afk [玩家（不填为自己）]<br>book	X	允许你打开并编辑一本书	&#x2F;book<br>]<br>compass	direction	查看你的朝向	&#x2F;compass<br>customtext	[make your own]	Allows the creation of custom commands	&#x2F;<alias> [page]<br>depth	height	查看你的海拔高度	&#x2F;depth<br>getpos	coords..[c 7]	查看（某玩家）坐标	&#x2F;getpos [player(不填为自己）]<br>help	X	打开help	&#x2F;help [页数（设定好的help.txt内容）\插件名\搜索] [页数]<br>helpop	amsg,ac	向在线的op请求帮助	&#x2F;helpop &lt;信息&gt;<br>ignore	X	忽略一个玩家	&#x2F;ignore &lt;玩家&gt;<br>info	ifo..[c 8]	查阅与这个服务器有关的信息!?	&#x2F;info &lt;page number&#x2F;chapter&gt;<br>itemdb	itemno,durability, dura	搜索物品	&#x2F;itemdb [物品]<br>list	who..[c 9]	查看在线的玩家	&#x2F;list [用户组]<br>mail	email	发送和查阅短信	&#x2F;mail [read\clear\send [to] [信息]]<br>&#x2F;mail sendall [信息]<br>me	action，describe	（说）你做出动作	&#x2F;me &lt;动作&gt;(输出：§1*你的ID 动作）<br>motd	X	查看每日信息	&#x2F;motd<br>msg	tell..[c 10]	私聊某玩家	&#x2F;msg &lt;玩家&gt; &lt;信息(可带&amp;）&gt;<br>near	nearby	查看附近的玩家	&#x2F;near [半径（值）]<br>&#x2F;near &lt;玩家名&gt; &lt;半径(值)&gt;<br>nick	nickname	改变玩家的显示名	&#x2F;nick [player] [nick\off]<br>powertool[c 11]	pt	绑定一个命令在你手上的物品	&#x2F;powertool [command [arguments]]<br>（绑定命令）..[c 12]<br>powertooltoggle	ptt, pttoggle	打开或关闭powertool	&#x2F;powertooltoggle<br>r	reply	快速回复私聊消息	&#x2F;r &lt;信息&gt;<br>realname	X	查看一个玩家的原本的用户名（即nick之前的名字）	&#x2F;realname &lt;玩家&gt;<br>recipe	method, formula, recipes	查看怎么去合成一个物品	&#x2F;recipe &lt;物品&gt; [合成编号!?]<br>rules	X	查看服务器规则	&#x2F;rules &lt;页数&gt;<br>seen	X	查看一个玩家最后的下线时间及地点	&#x2F;seen &lt;玩家\IP&gt;<br>spawner	changms,mobspawner	改变一个怪物的类型	&#x2F;spawner <Mob> &lt;延迟&gt;(为什么后面有一个延迟，我要去试下)<br>suicide	X	传说中的自杀	&#x2F;suicide<br>[c 13]<br>whois	X	显示一个玩家的信息	&#x2F;whois &lt;nickname\playername&gt;</p>
+<p>管理与制裁<br>命令	别名	作用	输入格式<br>antioch	grenade，tnt	bui~手榴弹	&#x2F;antioch<br>backup	X	启动回档	&#x2F;backup<br>ban	X	禁止一名玩家进入服务器	&#x2F;ban &lt;玩家&gt; &lt;理由&gt;<br>banip	X	禁止一个IP进入服务器	&#x2F;banip &lt;玩家\IP&gt;<br>broadcast	bcast	发送公告	&#x2F;broadcast &lt;信息（可加&amp;)&gt;[c 14]<br>burn	X	使一个玩家着火	&#x2F;brun &lt;玩家&gt; &lt;时间（秒）&gt;<br>clearinventory	ci, clean, clearinvent	清空一个玩家的背包	&#x2F;clearinventory [玩家]<br>&#x2F;clearinventory &lt;玩家&gt; [物品[:&lt;损伤值&gt;]|*|**] [数量]<br>deljail	remjail, rmjail	删除一个监狱	&#x2F;deljail &lt;监狱名&gt;<br>enderchest	echest,endersee,ec	查看某玩家的末影箱	&#x2F;enderchest [玩家]<br>essentials	ess	回档Ess或重载Ess	&#x2F;essentials [reload\debug]<br>&#x2F;essentials [reset] [玩家]<br>ext	extinguish	熄灭一个玩家身上的火焰	&#x2F;ext &lt;玩家&gt;<br>fireball	X	发出一个火球	&#x2F;fireball [small]<br>gc	lag..[c 15]	查看一个服务器的使用信息	&#x2F;gc<br>invsee	X	查看别的玩家的背包	&#x2F;invsee &lt;玩家&gt; [加任意字符查看装备]<br>jails	X	监狱列表	&#x2F;jails<br>kick	X	把一个玩家提出服务器	&#x2F;kick &lt;玩家&gt; &lt;理由&gt;<br>kickall	X	踢出所有非op玩家	&#x2F;kickall &lt;理由&gt;<br>kill	X	杀死一枚玩家	&#x2F;kill &lt;玩家&gt;<br>lightning	strike..[c 16]	向你看着的地方放闪电	&#x2F;lightning [玩家] [伤害]<br>mute	silence	禁言某玩家	&#x2F;mute &lt;玩家&gt; [时间]<br>nuke	X	从天而降许多TNT（不破坏地形)	&#x2F;nuke [玩家]<br>ping	pong,echo	测试消息[c 17]	&#x2F;ping [message（可加&amp;)(不填显示呯！..)]<br>remove	butcher, killall, mobkill	移走世界的特定实体	&#x2F;remove &lt;all\drops\xp&gt; [半径\世界]<br>[c 18]<br>setjail	createjail	创建一个新监狱	&#x2F;setjail &lt;监狱名&gt;<br>socialspy	X	查看其它玩家的私人消息（例如私聊，附近讲话）	&#x2F;socialspy [玩家]<br>spawnmob	mob	生成怪物	&#x2F;spawnmob <mob> [数量] [玩家]<br>[c 19]<br>sudo	X	使一个玩家执行一个指令（该玩家需要权限）	&#x2F;sudo &lt;玩家&gt; &lt;command [args]&gt;<br>&#x2F;sudo &lt;玩家&gt; c:&lt;内容&gt;（使玩家强制讲话）<br>tempban	X	临时禁止一个玩家进入服务器	&#x2F;tempban &lt;玩家&gt; &lt;时间[c 20]&gt;<br>thunder	X	是否雷雨天气	false&gt; [duration]<br>togglejail	tjail, unjail, jail	变更一个玩家的监狱状态	&#x2F;togglejail &lt;玩家&gt; &lt;监狱名&gt; [时间]（进监狱)<br>&#x2F;togglejail &lt;玩家&gt; [时间](出监狱）<br>unban	pardon	取消一个玩家的禁止状态	&#x2F;unban &lt;玩家&gt;<br>unbanip	pardonip	取消禁止一个IP	&#x2F;unbanip &lt;玩家名\IP&gt;<br>vanish	v	隐身状态	&#x2F;vanish [玩家] [on\off]<br>weather	sky..[c 21]	改变天气	&#x2F;weather &lt;storm\sun&gt; &lt;持续时间&gt;<br>[title]主城与设置</p>
+<p>命令	别名	作用	输入格式<br>setspawn	X	设定出生点（主城）（给一个用户组设定出生点（主城））	&#x2F;setspawn [用户组]<br>spawn	X	传送到主城	&#x2F;spawn &lt;玩家&gt;<br>传送<br>命令	别名	作用	输入格式<br>back	return	返回到上一传送点	&#x2F;back<br>delhome	remhome,rmhome	删除一个家	&#x2F;delhome &lt;家&gt;<br>&#x2F;delhome &lt;玩家&gt;:&lt;家&gt;<br>delwarp	remwarp,rmwarp	删除一个坐标点	&#x2F;delwarp &lt;坐标&gt;<br>home	homes	传送到一个家	&#x2F;home &lt;家&gt;<br>&#x2F;home &lt;玩家&gt;:&lt;家&gt;<br>jump	j,jumpto	传送到你看着的地方	&#x2F;jump<br>sethome	createhome	设置一个家	&#x2F;sethome &lt;家&gt;<br>&#x2F;sethome &lt;玩家&gt;:&lt;家&gt;<br>setwarp	createwarp	建立一个新坐标点	&#x2F;setwarp &lt;坐标点&gt;<br>top	X	传送到最高的方块	&#x2F;top<br>tp	tele, tp2p, teleport	传送到一个玩家身边	&#x2F;tp &lt;玩家&gt;<br>&#x2F;tp &lt;玩家1&gt; &lt;玩家2&gt;<br>tpa	call,tpask	请求传送到一个玩家身边	&#x2F;tpa &lt;玩家&gt;<br>tpaall	X	向所有人发生一个请求传送你(某玩家)身边来	&#x2F;tpaall [玩家]<br>tpaccept	tpyes	同意tpa	&#x2F;tpacept [玩家]<br>tpahere	X	请求一个玩家传送到你身边来	&#x2F;tpahere [玩家]<br>tpall	X	传送所有人到你(某玩家)身边	&#x2F;tpall [玩家]<br>tpdeny	tpno	拒绝tpa	&#x2F;tpdeny<br>[c 22]<br>tphere	s	将一个玩家传送到你身边	&#x2F;tphere [玩家]<br>tpo	X	强行传送到某玩家，无视拒绝传送	&#x2F;tpo &lt;玩家&gt;<br>tpohere	X	强行让某玩家传送到自己身边，无视拒绝传送	&#x2F;tophere &lt;玩家&gt;<br>tppos	X	传送到某坐标	&#x2F;tppos <x> <y> <z> [头左右偏转角度] [头上下倾斜角度]<br>tptoggle	X	开关其他玩家是否能传送到你	&#x2F;tptoggle [玩家]<br>warp	warps	传送到坐标点	&#x2F;warp [坐标名] [玩家]<br>world	X	允许你传送到其他世界	&#x2F;world &lt;nether\normal\0;1;2;3; etc..&gt;<br>具体请查阅<a target="_blank" rel="noopener" href="https://www.mcbbs.net/thread-290356-1-1.html">Writing</a></p>
+<h2 id="Residence插件-领地插件"><a href="#Residence插件-领地插件" class="headerlink" title="Residence插件 领地插件"></a>Residence插件 领地插件</h2><p>选择命令<br>&#x2F;res select [x] [y] [z] - 选择领地的长方体区域，X Y 和Z 都是从你当前位置为中心的距离，你也可以用一个工具（默认是木斧）来选择地块。<br>&#x2F;res select chunk - 选取一整个chunk。<br>&#x2F;res select expand [格数] - 向你的前方延伸选区。<br>&#x2F;res select size - 显示已选择区域的尺寸。<br>&#x2F;res select shift [格数] - 向你的前方移动选区。<br>&#x2F;res select vert - 把选区延伸到从天顶到地底。</p>
+<p>创建命令<br>&#x2F;res area [add&#x2F;remove&#x2F;replace] &lt;领地名&gt; [区域id] - 向叫做[领地名]的领地增加(add)、从其中去除(remove)或是替换 (replace) 区域。可与同一领地内的区域重合。<br>&#x2F;res create [领地名] - 选择好区域后创建一个叫做[领地名]的领地<br>&#x2F;res remove [领地名] - 移除一个叫[领地名]的领地<br>&#x2F;res removeall - 移除所有领地<br>&#x2F;res subzone &lt;领地名&gt; [子区域名] - 在领地内创建一块子区域，你必须是所有者才行。</p>
+<p>信息命令<br>&#x2F;res area list [领地名] - 列出某领地的所有区域<br>&#x2F;res area listall [领地名] - 列出某领地的所有区域以及他们的坐标<br>&#x2F;res current - 显示你所在的领地<br>&#x2F;res info &lt;领地名&gt; - 得到某领地的信息<br>&#x2F;res list - 显示你拥有的领地<br>&#x2F;res listall - 显示所有领地<br>&#x2F;res limits - 显示重要的权限<br>&#x2F;res sublist - 显示你所在领地的所有子区域<br>&#x2F;res version - 显示插件版本</p>
+<p>权限命令<br>&#x2F;res gset &lt;领地名&gt; [群组名] [权限] [true&#x2F;false&#x2F;remove] - 设置某领地对于某群组的权限<br>&#x2F;res lset &lt;领地名&gt; [黑名单&#x2F;忽略名单] [材质] - 从某领地的黑名单&#x2F;忽略名单中增加&#x2F;移除某材质<br>&#x2F;res lset &lt;领地名&gt; info - 显示某领地的黑名单&#x2F;忽略名单设置<br>&#x2F;res pset &lt;领地名&gt; [玩家名] [权限] [true&#x2F;false&#x2F;remove] - 设置某领地对于某玩家的权限<br>&#x2F;res set &lt;领地名&gt; [权限] [true&#x2F;false&#x2F;remove] - 设置某领地的权限</p>
+<p>其他命令<br>&#x2F;res default [领地名] - 重置某领地的权限设置<br>&#x2F;res give [领地名] [玩家名] - 将某领地赠与某玩家，你必须是领主且被赠予玩家在线<br>&#x2F;res lists - 预定领地许可清单的详细信息<br>&#x2F;res message [领地名] [enter&#x2F;leave] [信息] - 设置进入&#x2F;退出某领地时候显示的信息<br>&#x2F;res message [领地名] remove [enter&#x2F;leave] - 移除进入&#x2F;退出某领地时候的信息<br>&#x2F;res mirror [源领地名] [目标领地名] - 复制源领地的权限设置至目标领地<br>&#x2F;res rename - [旧名称] [新名称] 重命名领地.对于子空间旧名称必须全名，新名称可以只写子空间名<br>&#x2F;res renamearea [领地名] [旧名称] [新名称] - 重命名某领地中某区域的名称<br>&#x2F;res tp [领地名] - 传送至某领地<br>&#x2F;res tpset - 设置当前领地的传送点为你站立的地方<br>&#x2F;res unstuck - 将你从当前领地移出</p>
+<p>交易命令<br>&#x2F;res lease [renew&#x2F;cost] [领地名] - 更新&#x2F;显示 更新一个领地的费用（？意义不明）<br>&#x2F;res market list - 显示在售的所有领地<br>&#x2F;res market info [领地名] - 显示在售的某领地的信息<br>&#x2F;res market sell [领地名] [价格] - 将某领地出售<br>&#x2F;res market unsell [领地名] - 将某领地下架<br>&#x2F;res market buy [领地名] 购买某领地<br>&#x2F;res market rentable [领地名] [价格] [天数] <a href="repeat:t/f">repeat:t/f</a> - 将某领地以[价格]&#x2F;[天数]出租并设置可否自动续期<br>&#x2F;res market rent [领地名] <a href="repeat:t/f">repeat:t/f</a> - 设置某领地出租手否可自动续期<br>&#x2F;res market release [领地名] - 解除某领地的出租</p>
+<p>管理命令<br>&#x2F;resadmin lease set [领地名] [#天数&#x2F;infinite] - 设置领地的时间限制或不限时<br>&#x2F;resadmin removeall [玩家名] - 移除某玩家的所有领地<br>&#x2F;resadmin setowner [领地名] [玩家名] - 将某领地以交给某玩家<br>&#x2F;resadmin server [领地名] - 将某领地设置为服务器领地<br>&#x2F;resload - 载入领地插件. <em>注</em> 在res.yml的任何改变都不会被还原. 你可以再更改过res.yml后想立即将新设置生效的时候使用此命令<br>&#x2F;rereload - 重载领地插件. <em>注</em> 将会还原res.yml为初始状态. 如果你在res.yml更改过设置请不要使用此命令<br>&#x2F;res material <id> 查询物品的ID</p>
+<p>注：以上命令不写领地名则为当前所在的领地</p>
+<h2 id="起床战争"><a href="#起床战争" class="headerlink" title="起床战争"></a>起床战争</h2><p>为什么选择BedwarsRel？</p>
+<p>游戏大厅等待倒计时[等级，及2项可配置的选项]<br>最多支持15个队伍，每个队伍不限人数<br>支持自定义刷新点[不只是铜 铁 和 金]<br>选择队伍的GUI界面<br>控制友伤以及队友破坏脚下方块<br>商店只需要一个村民，并且完全可以配置<br>新的商店<br>可以更改世界，轻松回档<br>有颜色的玩家名<br>蹦极服的游戏状态MOTD<br>队聊和群聊<br>多语言[自带中文]<br>对于插件开发者的事件管理器<br>观战<br>团队箱子<br>控制游戏时间<br>游戏设置有许多命令<br>支持使用MySql和YAML文件来统计<br>更新检测器<br>救援平台<br>陷阱<br>回城卷轴<br>保护墙<br>TNT羊<br>地图记录<br>自定义游戏方块<br>自动更新插件<br>可以在游戏开始和结束时显示全屏文字<br>悬浮计分板 (需要HolographicDisplays和ProtocolLib)<br>几乎所有的事情都可以配置<br>在2个100-200人的服务器测试过<br>指令&amp;权限</p>
+<p>见WIKI</p>
+<p>简要教程[Made by @1345979462]</p>
+<p>首先，导入或建筑你的起床战争地图。</p>
+<p>使用指令</p>
+<p>&#x2F;bw addnewgame 游戏名字[这里我推荐为英文，在下方可以有变成中文的方法] 最小玩家数</p>
+<p>来新建一个游戏</p>
+<p>然后，使用指令</p>
+<p>&#x2F;bw addteam 游戏名字[与上方相同] 队伍名字[这里就需要中文了，限制字数为最少3个字] 队伍颜色 最大人数</p>
+<p>*队伍颜色请在WIKI中找寻</p>
+<p>然后，使用指令</p>
+<p>&#x2F;bw setspawn 游戏名字 队伍名字</p>
+<p>来为队伍设置出生点</p>
+<p>*出生点会以你的当前坐标和面朝方向构建</p>
+<p>设置床之前需要先使用【&#x2F;setgameblock 游戏名字 方块名称】来设置游戏方块（即基地）我不直接说&#x2F;setgameblock 游戏名字 bed是因为我发现这样设置是不行的！</p>
+<p>然后，使用指令</p>
+<p>&#x2F;bw setbed 游戏名字 队伍名字</p>
+<p>来为队伍设置床</p>
+<p>*你可以指向或踩在床上来设置</p>
+<p>然后，使用指令</p>
+<p>&#x2F;bw setspawner 游戏名字 bronze[铜]&#x2F;iron[铁]&#x2F;gold[金]&#x2F;自定义</p>
+<p>来增加资源产出点</p>
+<p>*会以你的脚所在的位置生成资源</p>
+<p>然后，使用指令</p>
+<p>&#x2F;bw setregion 游戏名字 loc1<br>&#x2F;bw setregion 游戏名字 loc2</p>
+<p>来设置起床战争游戏范围，玩家不能超过此范围来游玩。</p>
+<p>会以你的脚所在位置来计算范围。</p>
+<p>然后，使用指令</p>
+<p>&#x2F;bw setlobby 游戏名字</p>
+<p>来设置游戏大厅，大厅可以在任何地方，但不要在游玩区域内。</p>
+<p>使用指令</p>
+<p>&#x2F;bw regionname 游戏名字 中文名字</p>
+<p>来为游戏命名为中文</p>
+<p>最后，使用指令</p>
+<p>&#x2F;bw save 游戏名字</p>
+<p>来保存这个游戏。</p>
+<p>然后你需要</p>
+<p>&#x2F;bw reload</p>
+<p>使起床战争插件重新载入一遍配置。</p>
+<p>最后，在你想要玩家加入游戏的地方贴一块牌子</p>
+<p>[bw]</p>
+<p>游戏名字[英文名]</p>
+<p>空</p>
+<p>空</p>
+<p>这样，一个地图就完成设置了。</p>
+<p>FAQ时间</p>
+<p>为什么玩家无法使用牌子快捷加入？</p>
+<pre><code>    在服务器配置文件中把主城保护设置为0即可。
+</code></pre>
+<p>如何使用自带的汉化文件？</p>
+<pre><code>    在config.yml中，把locale: en项中的en改为zh，然后/bw reload即可。
+</code></pre>
+<p>其他FAQ欢迎提问</p>
+<p>队伍颜色<br>GREEN (RGB(85, 255, 85), ChatColor.GREEN, DyeColor.LIME)<br>RED (RGB(255, 85, 85), ChatColor.RED, DyeColor.RED)<br>BLUE (RGB(85, 85, 255), ChatColor.BLUE, DyeColor.LIGHT_BLUE)<br>YELLOW (RGB(255, 255, 85), ChatColor.YELLOW, DyeColor.YELLOW)<br>AQUA (RGB(85, 255, 255), ChatColor.AQUA, DyeColor.CYAN)<br>BLACK (RGB(0, 0, 0), ChatColor.BLACK, DyeColor.BLACK)<br>GOLD (RGB(255, 170, 0), ChatColor.GOLD, DyeColor.ORANGE)<br>DARK_BLUE (RGB(0, 0, 170), ChatColor.DARK_BLUE, DyeColor.BLUE)<br>DARK_GREEN (RGB(0, 170, 0), ChatColor.DARK_GREEN, DyeColor.GREEN)<br>DARK_RED (RGB(170, 0, 0), ChatColor.DARK_RED, DyeColor.BROWN)<br>DARK_PURPLE (RGB(170, 0, 170), ChatColor.DARK_PURPLE, DyeColor.MAGENTA)<br>GRAY (RGB(170, 170, 170), ChatColor.GRAY, DyeColor.SILVER)<br>DARK_GRAY (RGB(85, 85, 85), ChatColor.DARK_GRAY, DyeColor.GRAY)<br>LIGHT_PURPLE (RGB(255, 85, 255), ChatColor.LIGHT_PURPLE, DyeColor.PINK)<br>WHITE (RGB(255, 255, 255), ChatColor.WHITE, DyeColor.WHITE)</p>
+<p>权限</p>
+<p>权限<br>bw.setup</p>
+<p>允许设置和维护每一个游戏（管理员&#x2F;op）</p>
+<p>Default: OP<br>复制代码<br>权限<br>bw.vip.*</p>
+<p>允许玩家使用所有vip功能</p>
+<p>Default: OP<br>复制代码<br>权限<br>bw.vip.forcestart</p>
+<p>Allows to force start a game with the diamond in the inventory</p>
+<p>Default: 无<br>复制代码<br>权限<br>bw.vip.joinfull</p>
+<p>让vip加入一个游戏中的比赛&#x2F;满人大厅 将会踢一个随机的非VIP玩家</p>
+<p>Default: 无<br>复制代码<br>权限<br>bw.cmd</p>
+<p>允许玩家在游戏中使用其他指令？ (eg. &#x2F;lobby or &#x2F;gamemode)</p>
+<p>Default: op<br>复制代码<br>权限<br>bw.otherstats</p>
+<p>允许玩家使用这个指令来显示其他玩家的统计数据</p>
+<p>Default: op<br>复制代码<br>权限<br>bw.kick</p>
+<p>允许玩家踢出其他游戏中的玩家</p>
+<p>Default: op</p>
+<p>&#x2F;bw reload {type}<br>&#x2F;bw reload {类型}<br>这个命令重新加载配置文件和设置。当您删除配置&#x2F;区域设置文件时，他们将与当前插件版本的默认重新生成。使用一个参数，你可以选择什么应该被加载时。查看参数，找出你能够使用的参数。<br>注意：当使用游戏参数或参数时，所有的游戏都将被卸载，所有玩家都将被踢出游戏。<br>由于商店被排除在一个额外的文件，你可以使用商店作为参数来重新加载商店，而不是配置文件。</p>
+<p>(Permission) 权限<br>bw.setup</p>
+<p>(Arguments) 参数<br>可选参数: games;shop;config;locale;all<br>game是重新加载游戏<br>shop是重新加载商店<br>locale是重新加载区域<br>all是重新加载全部</p>
+<h2 id="地皮插件-PlotSquared）"><a href="#地皮插件-PlotSquared）" class="headerlink" title="地皮插件(PlotSquared）"></a>地皮插件(PlotSquared）</h2><h3 id="生成地皮教程-按顺序输入"><a href="#生成地皮教程-按顺序输入" class="headerlink" title="生成地皮教程 (按顺序输入)"></a>生成地皮教程 (按顺序输入)</h3><p>&#x2F;plot setup<br>&#x2F;plot setup PlotSquared<br>&#x2F;plot setup default<br>&#x2F;plot setup 地皮高度 设置为64就好了<br>&#x2F;plot setup 地皮大小<br>&#x2F;plot setup 地皮下面的方块的ID 一般都是泥土 ID为3 如有需求可自定义<br>&#x2F;plot setup 地皮表面方块ID 一般是草方块 ID为2<br>&#x2F;plot setup 没认领前围墙的ID 默认是44<br>&#x2F;plot setup 认领后围墙的ID 默认是44:1 两个应该可以设置相同方块<br>&#x2F;plot setup 路面宽<br>&#x2F;plot setup 路面高 设置64就可以了<br>&#x2F;plot setup 路面的方块 默认是石英块 ID155<br>&#x2F;plot setup 墙下面的方块 默认是石头 ID1<br>&#x2F;plot setup 墙的高度 一般是64<br>&#x2F;plot setup true&#x2F;false 是否开启基岩<br>&#x2F;plot setup 世界名字 不能中文<br>或者 &#x2F;mw create 世界名 plugin:PlotSquared(需要有多世界插件)</p>
+<h2 id="RichAutoMessage"><a href="#RichAutoMessage" class="headerlink" title="RichAutoMessage"></a>RichAutoMessage</h2><p>Command[指令]</p>
+<p>&#x2F;ram start - 启动消息<br>&#x2F;ram stop - 停止消息<br>&#x2F;ram reload - 重新载入这个插件<br>&#x2F;ram msg - 消息帮助<br>&#x2F;ram msg show - 显示所有的消息<br>&#x2F;ram msg add [输入消息] - 增加一条消息<br>&#x2F;ram msg del [消息ID]- 删除一条消息<br>&#x2F;ram msg edit [消息ID] [消息] - 编辑一条消息<br>&#x2F;ram prefix - 消息前缀帮助<br>&#x2F;ram prefix show - 显示所有前缀<br>&#x2F;ram prefix set [prefix] - 设置消息的前缀<br>&#x2F;ram suffix - 消息后缀帮助<br>&#x2F;ram suffix show - 显示所有消息后缀<br>&#x2F;ram suffix set [suffix] - 设置后缀<br>&#x2F;ram interval - 帮助说明<br>&#x2F;ram interval show - 显示每个消息的间隔<br>&#x2F;ram interval set  - 设置每个消息的间隔<br>&#x2F;ram starttime - 帮助说明<br>&#x2F;ram starttime show - 显示消息开始的时间<br>&#x2F;ram starttime set  - 设置开始的时间<br>&#x2F;ram startuptime - 帮助说明<br>&#x2F;ram startuptime show - 显示启动时间<br>&#x2F;ram startuptime set  - 设置启动时间<br>&#x2F;ram ran - 帮助说明<br>&#x2F;ram ran show - 显示设置的随机消息<br>&#x2F;ram ran set  - 设置随机消息<br>&#x2F;ram info - 显示此插件的相关信息<br>&#x2F;ram version - 显示插件的版本<br>&#x2F;ram help - 显示所有帮助</p>
+<p>权限</p>
+<p>ram.none -  ‘&#x2F;ram’<br>ram.start -  ‘&#x2F;ram start’<br>ram.stop -  ‘&#x2F;ram stop’<br>ram.reload -  ‘&#x2F;ram reload’<br>ram.msg.none - ‘&#x2F;ram msg’<br>ram.msg.show - ‘&#x2F;ram msg show’<br>ram.msg.add -  ‘&#x2F;ram msg add [msg]’<br>ram.msg.edit -  ‘&#x2F;ram msg edit <msgID> [msg]’<br>ram.prefix.none -  ‘&#x2F;ram prefix’<br>ram.prefix.show -  ‘&#x2F;ram prefix show’<br>ram.prefix.set - ‘&#x2F;ram prefix set <prefix>‘<br>ram.suffix.none -  ‘&#x2F;ram suffix’<br>ram.suffix.show -  ‘&#x2F;ram suffix show’<br>ram.suffix.set - ‘&#x2F;ram suffix set <suffix>‘<br>ram.interval.none -  ‘&#x2F;ram interval’<br>ram.interval.show - ‘&#x2F;ram interval show’<br>ram.interval.set -  ‘&#x2F;ram interval set <interval>‘<br>ram.starttime.none -  ‘&#x2F;ram starttime’<br>ram.starttime.show -  ‘&#x2F;ram starttime show’<br>ram.starttime.set -  ‘&#x2F;ram starttime set <starttime>‘<br>ram.startuptime.none -  ‘&#x2F;ram startuptime’<br>ram.startuptime.show - ‘&#x2F;ram startuptime show’<br>ram.startuptime.set -  ‘&#x2F;ram startuptime set <startuptime>‘<br>ram.random.none -  ‘&#x2F;ram ran’<br>ram.random.show - ‘&#x2F;ram ran show’<br>ram.random.set<br>ram.info<br>ram.version<br>ram.help</p>
+<h2 id="OpWhiteList-OP白名单列表-硬核翻译😂"><a href="#OpWhiteList-OP白名单列表-硬核翻译😂" class="headerlink" title="OpWhiteList(OP白名单列表-硬核翻译😂)"></a>OpWhiteList(OP白名单列表-硬核翻译😂)</h2><p>配置<br>#op白名单Op_Whitelist: []<br>#创造白名单Gamemode_Whitelist: []<br>#禁用物品黑名单BanItem: []<br>#卡创造OP后执行的命令Commands:</p>
+<ul>
+<li>bc &amp;4玩家&amp;c%player&amp;4因卡创造、OP而被系统封禁！！！</li>
+<li>bc &amp;4玩家&amp;c%player&amp;4因卡创造、OP而被系统封禁！！！</li>
+<li>bc &amp;4玩家&amp;c%player&amp;4因卡创造、OP而被系统封禁！！！</li>
+<li>bc &amp;4玩家&amp;c%player&amp;4因卡创造、OP而被系统封禁！！！</li>
+<li>bc &amp;4玩家&amp;c%player&amp;4因卡创造、OP而被系统封禁！！！</li>
+<li>kick %player- ban %player</li>
+</ul>
+<p>#获得违规物品后执行的命令BanItemCommands:</p>
+<ul>
+<li>bc &amp;e玩家&amp;6%player&amp;e因刷出物品而被封禁！！！</li>
+<li>bc &amp;e玩家&amp;6%player&amp;e因刷出物品而被封禁！！！</li>
+<li>bc &amp;e玩家&amp;6%player&amp;e因刷出物品而被封禁！！！</li>
+<li>kick %player</li>
+<li>ban %player<br>指令<br>&#x2F;owl op [ID] 添加 到OP白名单<br>&#x2F;owl deop [ID] 移除 从OP白名单<br>&#x2F;owl gamemode [ID] 添加 到创造白名单<br>&#x2F;owl degamemode [ID] 移除 从创造白名单<br>&#x2F;owl add 将单一物品ban<br>&#x2F;owl addall 子id全部废掉<br>&#x2F;owl removeall 一键移出<br>&#x2F;owl list 查看列表<br>&#x2F;owl reload 重载配置<br>权限<br>owl.*让玩家可以拥有所有封禁物品<br>owl.id.子id 让玩家拥有子id</li>
+</ul>
+<h2 id="公民2-NPC"><a href="#公民2-NPC" class="headerlink" title="公民2(NPC)"></a>公民2(NPC)</h2><p>常用指令</p>
+<p>&#x2F;npc create&lt;名字&gt; 创建一个叫 XXX 的NPC (NPC皮肤会根据皮肤站上的名字显示皮肤)<br>&#x2F;npc sel &lt;npc 名字&gt; 选定一个NPC(选定NPC之后才能进行删除或者编辑功能)<br>&#x2F;npc remove -删除NPC (删除之前请选定NPC)<br>&#x2F;npc remove all 删除所有NPC<br>&#x2F;npc age 设置NPC年龄(没什么用)<br>&#x2F;npc rename 给NPC设置新的名字<br>&#x2F;npc vulnerable 切换一个NPC的是否无敌状态（可以打npc  可以碰触npc 是否受伤）<br>&#x2F;npc control  提示NPC可以骑和控制(用NPC随意走动)     &#x2F;npc mount 控制骑上npc<br>&#x2F;NPC help查看帮助<br>&#x2F;npc playerlist (-a,r) 设置是否NPC放在玩家TAB列表<br>&#x2F;npc text 让NPC对附近的玩家说话 5秒会说一句话 (1.首先输入&#x2F;npc text  2.输入add 不要带&#x2F;号 3.话的内容 如:Hi,我是NPC<del>认识你很高兴 4.输入close 激活语句 不带&#x2F;      可以添加多种内容)<br>&#x2F;npc path [范围] - 设置一个NPC的寻路的范围(如果你输入了&#x2F;npc path 就会进入编辑NPC寻路系统，左键打一下地面，就会设置第一个寻路点，打第二个就会设置第二个寻路点，右键点地面就会取消上一次的寻路点，设置完成后输入&#x2F;npc path 退出编辑)<br>&#x2F;npc equip 可以给NPC穿装备支持任何能穿的装备(首先输入&#x2F;npc equip 然后手里拿着装备,右键NPC即可,卸下装备是用手右键点击NPC，就会脱掉所有装备 编辑完成后输入&#x2F;npc equip 退出编辑)<br>&#x2F;npc tp 传送到NPC的身边<br>&#x2F;npc tphere  让NPC传送到你的身边<br>&#x2F;npc pose 变化&#x2F;NPC的头部(暂时不清楚)<br>&#x2F;npc list NPC列表<br>&#x2F;npc moveto 将NPC固定到你站在的位置<br>&#x2F;npc respawn 设置一个Npc的死后重生的地点<br>&#x2F;npc create 名字 创建一个npc<br>&#x2F;npc spawn &lt;NPC名字&gt; 产生一个现有的NPC(如NPC死了,你想让他迅速复活,就输入这个命令)<br>&#x2F;npc size 召唤所有NPC<br>&#x2F;npc 显示基本的NPC信息<br>&#x2F;npc zombiemod  设置一个僵尸类型的PNC<br>&#x2F;npc horse  设置一个马类型的NPC<br>&#x2F;npc power 设置一个爬行者类型的NPC<br>&#x2F;npc ocelot 设置一个豹猫类型的NPC<br>&#x2F;npc wolf    设置一个狼类型的NPC<br>&#x2F;npc id 将所选NPC的ID发送给发送者<br>&#x2F;npc profession&#x2F;prof  设置一个NPC的职业(暂时不清楚)<br>&#x2F;npc tpto [player name&#x2F;npc id [player name]npc id -传送一个NPC或玩家到另一个NPC或玩家<br>&#x2F;npc owner 【name】 设置一个NPC的主人<br>&#x2F;npc gravity 切换NPC重力(是普通重力或者渐渐漂浮重力)<br>&#x2F;npc look 让NPC的视线跟随着你，一直看着你<br>&#x2F;npc targetable 切换野怪是否打NPC<br>&#x2F;npc type &lt;物种&gt; 设置NPC的物种<br>有以下物种:player玩家 Pig猪 Cow牛 Sheep羊 Horse马 Mooshroom哞菇  IronGolem铁傀儡  Snowman雪傀儡   Squid鱿鱼wolf狼  Ocelot猫 Villager村民 Bat蝙蝠  Zombie僵尸 PigZombie僵尸猪人  Skeleton骷髅 Creeper爬行者 Spider蜘蛛 CaveSpider洞穴蜘蛛 Giant巨人  MagmaCube岩浆怪 Silverfish蠹虫 Slime史莱姆 Blaze烈焰人 Wither凋零 Enderman末影人 Witch女巫 ghast恶魂 Chicken鸡   Wither凋零    EnderDragon末影龙<br>&#x2F;npc rename 重命名<br>&#x2F;npc speak 使用npc进行说话(有时候不太稳定)<br>&#x2F;npc leashable 切换可滤去<br>&#x2F;npc anchor 更改&#x2F;保存&#x2F;NPC的位置<br>&#x2F;npc despawn &lt;NPC名字&gt; 取消复活<br>&#x2F;npc copy 复制npc<br>&#x2F;npc speed &lt;速度值&gt; 改变NPC的行走速度  (0.1</del>10)<br>&#x2F;npc gamemode &lt;模式&gt; 改变NPC的模式 (0-1)</p>
+<p>权限</p>
+<p>citizens.admin  管理权限<br>citizens.npc      NPC权限</p>
+<h2 id="虚拟玩家在线"><a href="#虚拟玩家在线" class="headerlink" title="虚拟玩家在线"></a>虚拟玩家在线</h2><p>　　&#x2F;fpo help - 帮助</p>
+<p>　　&#x2F;fpo lock -锁定&#x2F;解锁，锁定后将会踢出所有假玩家</p>
+<p>　　&#x2F;fpo real - toggle overriding real players in list</p>
+<p>　　&#x2F;fpo add - 添加一个假玩家(支持颜色代码，输入后立即生效)</p>
+<p>　　&#x2F;fpo join - 添加一个假玩家并且发送消息</p>
+<p>　　&#x2F;fpo del - 删除一个假玩家(必须完整输入添加时的名称，包括空格，符号和颜色代码)</p>
+<p>　　&#x2F;fpo leave - 删除一个假玩家并且发送消息</p>
+<p>　　&#x2F;fpo list - 获取假玩家列表</p>
+<p>　　&#x2F;fpo fake - toggle displaying fake players in list</p>
+<p>　　&#x2F;fpo npc - toggle displaying NPC’s names in list</p>
+<p>　　&#x2F;fpo serverlist - toggle fake online info at server list menu</p>
+<p>　　&#x2F;fpo slots [fake reserved slots] - toggle faking the reserved slots counter or set it’s value</p>
+<p>　　&#x2F;fpo listcmd [command1,command2..] - toogle using the &#x2F;list command overriding, or define &#x2F;list command aliases</p>
+<p>　　&#x2F;fpo online [fake players online] - toggle faking the fixed online counter or set it’s value</p>
+<p>　　&#x2F;fpo motd [MOTD] - toggle using the alternative MOTD or set it’s value</p>
+<p>　　&#x2F;fpo cfg - display current configuration</p>
+<p>　　权限:</p>
+<p>　　fakeplayers.config - 使用指令的权限</p>
+<p>　　fakeplayers.canseehidden -显示假玩家</p>
+<p>　　fakeplayers.red - 将获得权限的玩家名变为红色</p>
+<p>　　fakeplayers.unlock - 忽略服务器锁定</p>
+<h2 id="ChestCommands菜单教程"><a href="#ChestCommands菜单教程" class="headerlink" title="ChestCommands菜单教程"></a>ChestCommands菜单教程</h2><p>准备工具ChestCommands插件,由edcsg开发的”树形图制作者2.9正式版 —— ChestCommands 与 BossShop 可视的菜单”<br>下载: <a target="_blank" rel="noopener" href="https://www.mcbbs.net/thread-542949-1-3.html">可视的菜单</a><br>当你打开程序的时候你就会了😊</p>
+<h2 id="浮空字插件-Holographic-Displays"><a href="#浮空字插件-Holographic-Displays" class="headerlink" title="浮空字插件 Holographic Displays"></a>浮空字插件 Holographic Displays</h2><p>目前功能:</p>
+<p>创建浮空的文本<br>悬空的物品<br>可以简单快速的使用<br>为开发人员提供的简易API<br>只需要一个命令就可以将图片转换成全息影像<br>你可以创建酷炫的动画效果字体&#x2F;图片<br>使用&amp;u代码可以创建闪烁字体<br>支持任何的UTF-8编码的特殊字符<br>可以显示在线人数,包括BungeeCord(多个BungeeCord也支持)<br>支持Spigot&#x2F;CB 1.6.4-1.8,MCPC+ 1.6.4-1.7<br>使用教程:</p>
+<p>&#x2F;hd help 显示所有的HD相关指令<br>如何安装:<br>将你下载的 HolographicDisplays.jar 丢入服务器的plugins文件夹内<br>重启你的服务器<br>创建一个简单的全息影像<br>当你在服务器是OP,或者拥有相关权限的时候<br>&#x2F;hd create &lt;编号&gt; &lt;内容(可以用字体代码)&gt;   创建一个全息影像,并且第一行显示为&lt;内容&gt;<br>&#x2F;hd addline &lt;编号&gt; &lt;内容&gt;   添加&lt;内容&gt;到&lt;编号&gt;全息影像中的下一行<br>&#x2F;hd removeline &lt;编号&gt; &lt;行数&gt;   移除&lt;编号&gt;的第&lt;行数&gt;内容<br>创建一个从图片导入的全息影像<br>首先,你需要上传一张PNG图片(最好不要太大)，到插件文件夹目录下。(&#x2F;plugins&#x2F;HolographicDisplays&#x2F;)<br>&#x2F;hd create &lt;编号&gt;<br>&#x2F;hd edit &lt;编号&gt;<br>&#x2F;hd readimage &lt;编号&gt; &lt;图片名称&gt;.png &lt;长宽&gt;<br>例子:&#x2F;hd readimage a-1 test.png 10<br>注意,&lt;长款&gt;最大为100<br>创建一个现实在线玩家个数的全息影像<br>&#x2F;hd addline &lt;编号&gt; &amp;a&amp;l在线人数:&amp;b&amp;l{online}<br>移除一个全息影像<br>&#x2F;hd delete &lt;编号&gt;<br>符号</p>
+<p>默认符号<br>?  [x] &#x3D; █<br>?  [&#x2F;] &#x3D; ▌<br>?  [.] &#x3D; ?<br>?  [..] &#x3D; ?<br>?  […] &#x3D; ▓<br>?  [p] &#x3D; ?<br>?  [|] &#x3D; ? (thin vertical bar)<br>如何自定义符号:<br>打开“placeholders.yml”。按照格式,一行一个进行添加。</p>
+<ol>
+<li>选择一个符号 (点击我前往一个有帮助的网站)</li>
+<li>找到代码</li>
+<li>按照格式添加</li>
+<li>将文本保存,重载插件</li>
+</ol>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zh.minecraft.wiki/images/Bedrock_Dedicated_Server_Icon.png?0b213" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zh.minecraft.wiki/images/Bedrock_Dedicated_Server_Icon.png?0b213" title="头像" alt="头像"></a><div class="post-copyright__author_name">FSP2020</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://fsp2026.qzz.io/2021/03/21/MC-Command/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://fsp2026.qzz.io/2021/03/21/MC-Command/')">Minecraft服务器常用命令</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://fsp2026.qzz.io/2021/03/21/MC-Command/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=Minecraft服务器常用命令&amp;url=https://fsp2026.qzz.io/2021/03/21/MC-Command/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://fsp2026.qzz.io" target="_blank">FSP2020个人博客</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>我的世界<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://zh.minecraft.wiki/images/Bedrock_Dedicated_Server_Icon.png?0b213" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/03/14/MC-LJXHaK/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">联机侠（全）</div></div></a></div><div class="next-post pull-right"><a href="/2021/04/10/English%20Word/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">中考英语单汇汇总</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zh.minecraft.wiki/images/Bedrock_Dedicated_Server_Icon.png?0b213" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description">a simple blog</div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Banitem"><span class="toc-number">1.</span> <span class="toc-text">Banitem</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Groupmanager-%E6%9D%83%E9%99%90%E7%BB%84"><span class="toc-number">2.</span> <span class="toc-text">Groupmanager(权限组)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#essential"><span class="toc-number">3.</span> <span class="toc-text">essential</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Residence%E6%8F%92%E4%BB%B6-%E9%A2%86%E5%9C%B0%E6%8F%92%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text">Residence插件 领地插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%B7%E5%BA%8A%E6%88%98%E4%BA%89"><span class="toc-number">5.</span> <span class="toc-text">起床战争</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E7%9A%AE%E6%8F%92%E4%BB%B6-PlotSquared%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">地皮插件(PlotSquared）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%9C%B0%E7%9A%AE%E6%95%99%E7%A8%8B-%E6%8C%89%E9%A1%BA%E5%BA%8F%E8%BE%93%E5%85%A5"><span class="toc-number">6.1.</span> <span class="toc-text">生成地皮教程 (按顺序输入)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RichAutoMessage"><span class="toc-number">7.</span> <span class="toc-text">RichAutoMessage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpWhiteList-OP%E7%99%BD%E5%90%8D%E5%8D%95%E5%88%97%E8%A1%A8-%E7%A1%AC%E6%A0%B8%E7%BF%BB%E8%AF%91%F0%9F%98%82"><span class="toc-number">8.</span> <span class="toc-text">OpWhiteList(OP白名单列表-硬核翻译😂)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AC%E6%B0%912-NPC"><span class="toc-number">9.</span> <span class="toc-text">公民2(NPC)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E7%8E%A9%E5%AE%B6%E5%9C%A8%E7%BA%BF"><span class="toc-number">10.</span> <span class="toc-text">虚拟玩家在线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ChestCommands%E8%8F%9C%E5%8D%95%E6%95%99%E7%A8%8B"><span class="toc-number">11.</span> <span class="toc-text">ChestCommands菜单教程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%AE%E7%A9%BA%E5%AD%97%E6%8F%92%E4%BB%B6-Holographic-Displays"><span class="toc-number">12.</span> <span class="toc-text">浮空字插件 Holographic Displays</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/01/14/Q/" title="鹞稚Q">鹞稚Q</a><time datetime="2023-01-14T11:20:24.000Z" title="发表于 2023-01-14 19:20:24">2023-01-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/09/11/FSTOOL/" title="FS-工具">FS-工具</a><time datetime="2021-09-11T12:08:02.000Z" title="发表于 2021-09-11 20:08:02">2021-09-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/09/09/9-9/" title="【转】致广大联机侠朋友们的一封信">【转】致广大联机侠朋友们的一封信</a><time datetime="2021-09-09T11:48:40.000Z" title="发表于 2021-09-09 19:48:40">2021-09-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/04/11/Phonics/" title="Phonics基本规则">Phonics基本规则</a><time datetime="2021-04-11T05:51:11.000Z" title="发表于 2021-04-11 13:51:11">2021-04-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/04/10/chemistry/" title="chemistry">chemistry</a><time datetime="2021-04-10T12:39:14.000Z" title="发表于 2021-04-10 20:39:14">2021-04-10</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2026 By <a class="footer-bar-link" href="/" title="FSP2020" target="_blank">FSP2020</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">6</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">FSO2020个人博客</div><div class="back-menu-list"><a class="back-menu-item" href="https://fsp2026.qzz.io/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="FSP2020"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="FSP2020"/><span class="back-menu-item-text">FSP2020</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/English/" style="font-size: 0.88rem;">English<sup>2</sup></a><a href="/tags/FS/" style="font-size: 0.88rem;">FS<sup>1</sup></a><a href="/tags/Story/" style="font-size: 0.88rem;">Story<sup>1</sup></a><a href="/tags/chemistry/" style="font-size: 0.88rem;">chemistry<sup>1</sup></a><a href="/tags/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/" style="font-size: 0.88rem;">我的世界<sup>1</sup></a><a href="/tags/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C%E8%81%94%E6%9C%BA%E4%BE%A0/" style="font-size: 0.88rem;">我的世界联机侠<sup>2</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="17841074526" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.7.1",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 FSP2020 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://cdn.cbd.int/qrcodejs@1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
