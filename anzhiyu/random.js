@@ -1,3 +1,3 @@
-var posts=["2021/04/11/Phonics/","2021/09/11/FSTOOL/","2021/03/14/MC-LJXHaK/","2021/03/21/MC-Command/","2021/09/09/9-9/","2023/01/14/Q/","2026/03/19/ysnb/","2021/04/10/the summary/","2021/04/10/chemistry/","2025/11/19/words_of_mine/","2025/11/19/chitchat/","2025/10/27/words_of_mine2/","2025/06/10/words_of_mine3/","2025/04/20/words_of_mine4/"];function toRandomPost(){
+var posts=["2021/04/11/Phonics/","2021/09/11/FSTOOL/","2021/03/14/MC-LJXHaK/","2021/03/21/MC-Command/","2021/09/09/9-9/","2023/01/14/Q/","2026/03/19/ysnb/","2021/04/10/the summary/","2021/04/10/chemistry/","2025/11/19/words_of_mine/","2025/11/19/chitchat/","2025/10/27/words_of_mine2/","2025/06/10/words_of_mine3/","2025/04/20/words_of_mine4/","2026/03/23/NEwPlan/"];function toRandomPost(){
     pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);
   };
