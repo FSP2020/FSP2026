@@ -1,36 +1,141 @@
 <!DOCTYPE html>
+<!--
+  FSP2020-U8终端 · 更新页（update.html）
+  ─────────────────────────────────────────────────────────────
+  用途：把这个文件放到你的 HTTPS 空间（Vercel / 博客 / OSS 都行），
+        程序会按下面两个标记抠出中间那段，渲染进「更新」页签。
+
+  怎么改（只改下面那一块，别动标记本身）：
+    · 以 # 开头的行 = 开一张版本卡，格式「#版本 | 日期」
+    · 以 - 开头的行 = 这个版本下的一条更新内容
+    · 空行随便空，程序会忽略
+    · 新的版本写在最上面
+
+  程序端对应常量（app_ui.py 顶部）：
+    UPDATE_URL   = "https://你的域名/update.html"
+    UPDATE_BEGIN = "<!--U8UPDATE_BEGIN-->"
+    UPDATE_END   = "<!--U8UPDATE_END-->"
+  ─────────────────────────────────────────────────────────────
+-->
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>FSP2020 更新日志</title>
-    <style>
-        body {
-            font-family: "Microsoft YaHei", sans-serif;
-            font-size: 20px; /* 改这里：14px 是小字，18px 是大字 */
-            line-height: 1.6;
-            color: #333;
-        }
-        pre {
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FSP2020-U8终端 · 更新记录</title>
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 40px 20px 72px;
+    background: #f3f3f3; color: #1b1b1b;
+    font: 15px/1.7 "Microsoft YaHei UI", "Segoe UI", system-ui, sans-serif;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 26px; margin: 0 0 6px; }
+  .sub { color: #5c5c5c; font-size: 14px; margin-bottom: 26px; }
+  .card {
+    background: #fff; border: 1px solid #e3e3e3; border-radius: 10px;
+    padding: 18px 20px; margin-bottom: 14px;
+  }
+  .ver { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+  .ver b { font-size: 17px; }
+  .ver span { color: #767676; font-size: 13px; }
+  .card ul { margin: 0; padding-left: 20px; }
+  .card li { margin: 4px 0; color: #333; }
+  pre#u8update {
+    display: none;                       /* JS 可用时隐藏；不可用时会显示出来（也是好读的纯文本） */
+    background: #fff; border: 1px solid #e3e3e3; border-radius: 10px;
+    padding: 16px 18px; overflow-x: auto; white-space: pre-wrap;
+    font: 13px/1.7 Consolas, "Courier New", monospace; color: #333;
+  }
+  .badge {
+    display: inline-block; background: #e1eefb; color: #0f5ca8;
+    border-radius: 999px; padding: 2px 10px; font-size: 12px; margin-left: 8px;
+  }
+  footer { color: #767676; font-size: 13px; margin-top: 26px; text-align: center; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #17191d; color: #eceef1; }
+    .sub, .ver span, footer { color: #a9aeb6; }
+    .card, pre#u8update { background: #1e2126; border-color: #2e3238; }
+    .card li { color: #c9ced6; }
+    .badge { background: #1d2c3d; color: #8fb8e8; }
+  }
+</style>
 </head>
 <body>
-<pre>
-v26w9a2c (2026-09-29)
-- 新增一键检验功能，自动核实底层数据
-- 增加停机维护缓存刷新机制，解决回弹问题
-- 加入后台日志审计与云端版本比对
-- 优化主页UI
+<div class="wrap">
+  <h1>FSP2020-U8终端 <span class="badge">更新记录</span></h1>
+  <div class="sub">U8+ V13.0 账套维护工具 · 下面的内容程序会自动读取</div>
 
-v26w9a2b (2026-09-27)
-- 修复期初试算不平衡
-- 新增账套ID和iSysId同步修改
-- 实现CImpv加密哈希逆向同步
+  <!-- ======== 编辑区：只改这一块 ======== -->
+  <pre id="u8update"><!--U8UPDATE_BEGIN-->
+#26w9c | 2026-09-29
+- 新增「修改查询凭证列表」：先查 GL_accvouch 里审核人 / 出纳的旧名字命中多少行，确认后整列替换
+- 新增「一键检验」：只读检查 UA_User / GL_accvouch / Inventory / hr_hi_person 的人名是否改干净
+- 顶部页签扩到 6 个：首页 / U8SQL修改 / 后台日志 / 额外设置 / 更新 / 关于我们
+- 「U8SQL修改」改成蓝白配色（淡蓝底 + 白卡 + 蓝字标题），信息框与按钮左右分栏
+- 执行日志搬进独立的非模态窗口：可以最小化到任务栏，工具栏带「置顶」开关
+- 「额外设置」从弹窗改成页签页面（卡头带计数与全选 / 全不选，行距拉开）
+- 首页只留大标题（微软雅黑加粗）+ 灰字副标题（宋体），靠右侧右对齐
+#26w9b | 2026-09-26
+- 界面重构：顶部页签导航（首页 / U8SQL修改 / 更新 / 关于我们）
+- 整体换成 Windows 11 浅色风格：Mica 底色、白色卡片、强调色按钮、页签下划线
+- 新增「文本识别」：粘贴文本自动填 账套ID / 管理员 / 成员1 / 成员2
+- 修正 cImpV 加密算法：25 字节定长明文体、长度字节 = 文本长 + 2、字母表 : ;
+#26w9a | 2026-09-20 起
+- 第一版：深色单页界面（表单 + 按钮网格 + 右侧日志栏）
+- 删除外键 / 替换名字 / 更新日期 / 修正人员档案表 / 修正人员性别
+- 额外设置 + 应用额外设置（一次改多张表里的人名）
+- 修正档案日期 / 修正余额表参数 / 重置密码 / 初始化数据库 / 账套引入 / 删除数据库
+- 修改账套ID 与 iSysId（OLE 日期）、修改 cImpV 标记
+<!--U8UPDATE_END--></pre>
+  <!-- ======== 编辑区结束 ======== -->
 
-v26w9a2a (2026-09-25)
-- FSP2020初始版本，支持一键替换名字和档案
-</pre>
+  <footer>最后更新：2026-09-29 · FSP2020-U8终端</footer>
+</div>
+
+<script>
+// 把上面那段纯文本渲染成卡片（纯增强：脚本不跑也能看到 <pre> 里的内容）
+(function () {
+  var box = document.getElementById('u8update');
+  if (!box) return;
+  var text = box.textContent.replace(/<!--U8UPDATE_BEGIN-->|<!--U8UPDATE_END-->/g, '');
+  var cards = [], cur = null;
+  text.split(/\r?\n/).forEach(function (raw) {
+    var line = raw.trim();
+    if (!line) return;
+    if (line.charAt(0) === '#') {
+      var head = line.slice(1).split('|');
+      cur = { ver: head[0].trim(), date: (head[1] || '').trim(), items: [] };
+      cards.push(cur);
+    } else {
+      if (!cur) { cur = { ver: '更新', date: '', items: [] }; cards.push(cur); }
+      cur.items.push(line.replace(/^[-•*·]\s*/, ''));
+    }
+  });
+  if (!cards.length) return;
+  var host = document.createElement('div');
+  cards.forEach(function (c) {
+    var card = document.createElement('div');
+    card.className = 'card';
+    var v = document.createElement('div');
+    v.className = 'ver';
+    v.innerHTML = '<b></b><span></span>';
+    v.querySelector('b').textContent = c.ver;
+    v.querySelector('span').textContent = c.date;
+    card.appendChild(v);
+    var ul = document.createElement('ul');
+    c.items.forEach(function (it) {
+      var li = document.createElement('li');
+      li.textContent = it;
+      ul.appendChild(li);
+    });
+    card.appendChild(ul);
+    host.appendChild(card);
+  });
+  box.parentNode.insertBefore(host, box);
+  box.style.display = 'none';
+})();
+</script>
 </body>
 </html>
