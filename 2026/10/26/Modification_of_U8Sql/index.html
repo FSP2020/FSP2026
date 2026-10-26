@@ -1,0 +1,502 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>针对U8账套信息修改：SQL数据库修改教程 | FSP2020个人博客</title><meta name="keywords" content="教程"><meta name="author" content="FSP2020"><meta name="copyright" content="FSP2020"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="针对U8账套信息修改：SQL数据库修改教程"><meta name="application-name" content="针对U8账套信息修改：SQL数据库修改教程"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="针对U8账套信息修改：SQL数据库修改教程"><meta property="og:url" content="https://fsp2026.qzz.io/2026/10/26/Modification_of_U8Sql/index.html"><meta property="og:site_name" content="FSP2020个人博客"><meta property="og:description" content="免责声明&amp;emsp;&amp;emsp;本教程 SQL 仅用于实训学习，禁止篡改数据，操作风险自行承担。 会计系统基本原理摘要&amp;emsp;&amp;emsp;在《会计信息系统》课程实训中，U8 账套依托 SQL Server 存储全部业务与日志数据。本文通过实操 SQL 语句，学习账套数据查询、复制与修改的底层操作"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://img-baofun.zhhainiao.com/fs/dff28a73d7bbdbbf36bdf0470c9049cd.jpg"><meta property="article:author" content="FSP2020"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://img-baofun.zhhainiao.com/fs/dff28a73d7bbdbbf36bdf0470c9049cd.jpg"><meta name="description" content="免责声明&amp;emsp;&amp;emsp;本教程 SQL 仅用于实训学习，禁止篡改数据，操作风险自行承担。 会计系统基本原理摘要&amp;emsp;&amp;emsp;在《会计信息系统》课程实训中，U8 账套依托 SQL Server 存储全部业务与日志数据。本文通过实操 SQL 语句，学习账套数据查询、复制与修改的底层操作"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://fsp2026.qzz.io/2026/10/26/Modification_of_U8Sql/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: undefined,
+  diytitle: undefined,
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: undefined,
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":true,"limitCount":50,"languages":{"author":"作者: FSP2020","link":"链接: ","source":"来源: FSP2020个人博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.2.0/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.2.0/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'FSP2020个人博客',
+  title: '针对U8账套信息修改：SQL数据库修改教程',
+  postAI: '',
+  pageFillDescription: '免责声明, 会计系统基本原理, 摘要, 关键词, SQL Server Management Studio 基础入门, 在SSMS中定位账套, 选中对应账套新建命令行, SQL基本语法, 单引号 3939 讲解, SELECT 查询, FROM 关键字讲解, Update 语法, WHERE 关键字讲解, DELETE 语法, U8 SQL相关表, UA_User（操作员表）, UA_Log_EX（上机日志表）, UFSystem（系统库）, AccInformation（账套参数表）, UA_User（操作员表）, UA_Role（角色表）, UA_RoleAuth（角色权限表）, UA_UserRole（用户角色关联表）, UFDATA_账套号_年度（业务库）, UA_Log_EX（上机日志表）, GL_accvouch（凭证及明细账表）, DispatchList（发货单主表）, DispatchLists（发货单子表）, SaleBillVouch（销售发票主表）, SaleBillVouchs（销售发票子表）, RdRecord（出入库单主表）, RdRecords（出入库单子表）, Inventory（存货档案表）, 往后涉及到的表可通过AI识别查询, 选中UFsystem或UFDATA_账套号_年度教程, 切换到业务库（示例账套1232025年度）, 手动打开, 账套ID修改（修改备份lst导入法）, 步骤, 常见踩坑, 总结免责声明本教程仅用于实训学习禁止篡改数据操作风险自行承担会计系统基本原理摘要在会计信息系统课程实训中账套依托存储全部业务与日志数据本文通过实操语句学习账套数据查询复制与修改的底层操作观察表之间关联关系理解业务界面和数据库底层的数据映射逻辑以此加深对数据库增删改查事务表结构的理解本内容仅作为数据库技术学习资料关键词基础入门简称是微软官方提供的可视化数据库管理工具用来连接管理数据库实例的账套业务数据上机日志凭证信息全部保存在数据库中我们就是通过连接后台数据库执行语句完成数据查询复制等实操练习在中定位账套完成登录后在左侧对象资源管理器展开数据库节点数据库有固定命名规则账套号账套元数据库存储账套基础配置信息账套号年度业务数据库凭证单据上机日志等业务数据均存放于此全局系统库统一管理全部账套操作员权限信息选中本次实验对应的账套号年度业务库后续脚本都需要在该库环境下执行如图所示选中对应账套新建命令行本文以账套号为例选中目标业务库后点击顶部菜单栏的新建查询打开编辑窗口在此窗口内编写并执行语句注意确认上方数据库下拉框已经切换到目标业务库避免在错误数据库中执行基本语法本节以账套为例介绍在业务库中常用的基础语句包含查询插入更新删除四类核心操作重要提醒语句具备修改删除数据能力仅允许在隔离虚拟机实训环境测试正式环境严禁随意执行单引号讲解在里面单引号用来包裹字符串用户名文字备注双引号默认不是给字符串用的一般用来包裹表名字段名标识符例子查询用于读取表内数据我们常用它查询上机日志凭证记录查询上机日志表前条记录查询中所有内容关键字讲解的作用指定数据来自哪一张数据表语法结构要查的字段表名代表取出这张表里所有字段告诉数据库数据从上机日志表里面拿语法用来修改表中已经存在的数据条件如果省略整张表所有行的数据都会被更新基础格式表名字段名新值筛选条件如这里将为列中的改成了关键字讲解的作用过滤行只对满足条件的数据生效都可以搭配没有就会作用于整张表风险极高语法逻辑语句表名内容条件语法用于删除表里面的数据行同样属于高危语句必须配合使用基础语法表名筛选条件相关表基于上述学习我们掌握了基础语法记住核心规范修改账套数据前必须先用核对数据确认无误再执行下面介绍运维中高频用到的数据表示例账套依旧使用若有涉及到具体数值可通过命名查看操作员表存放库系统库不是业务库保存所有操作员账号状态账套主管标记常用字段操作员编码登录账号操作员姓名加密后的登录密码不能直接明文改是否账套主管是否账号停用标记启用停用注若需要设置空密码需令采用了哈希加密手段若使用未加密的字符串会导致账套无法登录查询全部操作员先校验启用被停用账号示例上机日志表前面练习用到的表记录用户登录退出功能操作日志常用字段操作员账号操作内容操作日期查询日志系统库账套参数表作用保存账套全局配置模块启用状态操作员表作用存放操作员账号状态账套主管标记常用字段操作员编码登录账号操作员姓名加密后的登录密码单向不能直接解密是否账套主管是否账号停用标记启用停用角色表作用存放角色信息配合分配权限常用字段角色编码角色名称角色权限表作用保存角色对应的功能权限用户角色关联表作用绑定操作员和所属角色账套号年度业务库上机日志表作用记录用户登录退出功能操作日志常用字段操作员账号操作内容操作日期凭证及明细账表作用总账核心财务表存放记账凭证修改风险极高常用字段自增凭证类别凭证号科目编码发货单主表作用销售发货单表头数据发货单子表作用销售发货单行明细销售发票主表作用销售专用普通发票表头销售发票子表作用销售发票明细行出入库单主表作用材料出入库产成品入库单据表头出入库单子表作用出入库明细存货档案表作用存货物料基础档案常用字段存货编码存货名称部门档案表作用部门基础资料职员档案表作用员工业务员档案客户档案表作用客户基础档案供应商档案表作用供应商基础档案往后涉及到的表可通过识别查询选中或账套号年度教程切换到业务库示例账套年度在中输入该命名会跳转到业务库手动打开具体方法同中定位账套所示账套修改修改备份导入法原理的账套备份会生成这个文本文件里面记录了账套号账套名称年度等信息修改里面的账套标识再执行账套引入就能以新账套号恢复步骤正常在系统管理对目标账套做账套备份备份完成后找到备份文件夹文件夹内一般有两个文件数据库备份文件复制一份原备份整个文件夹做备份右键用记事本打开修改里面所有和账套号相关的参数示例原始内容账套改成测试账套账套号核心把旧账套号改成你想要的新账套号保存关闭编辑器打开系统管理登录点击账套引入选中这个修改后的按照向导下一步导入导入成功后就是新账套的账套常见踩坑编码问题是编码不要直接保存成会引入报错引入失败记事本保存时编码选账套号重复目标新账套号不能在当前数据库已经存在否则引入报错年度账备份的和普通账套备份格式不一样这个教程只适用于账套备份不是年度账备份为什么不直接数据库改账套账套在各个年度几十张表都存在外键关联直接更新很容易出现档案单据权限错乱后续查账结账报错极难修复总结本篇笔记整理了数据库相关的实操方法包含数据库区分底层数据修改备份文件调整文档排版与内部锚点等内容仅作为个人技术学习研究参考使用整套系统数据表之间存在大量隐藏关联外键约束与业务校验逻辑很多数据异常不会在操作完成的瞬间体现常常延迟到凭证记账月末结账报表查询年度结转的时候才暴露故障排查难度极大修复成本很高在有真实业务数据的生产环境中优先使用前台界面系统管理自带功能完成账套维护工作尽量避免直接操作数据库修改备份文件这类绕过上层业务校验的手段如果出于调试目的必须进行底层改动一定要提前对整套账套做完整备份并且单独留存一份备份文件操作结束后逐项核对凭证单据余额表等核心数据确认业务逻辑没有异常',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-10-26 19:51:08',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 8.1.1"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">FSP2020个人博客</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">音乐</div><span class="author-content-item-title">灵魂的碰撞💥</span></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/10/"><span class="card-archive-list-date">十月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/06/"><span class="card-archive-list-date">六月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/05/"><span class="card-archive-list-date">五月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/04/"><span class="card-archive-list-date">四月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/03/"><span class="card-archive-list-date">三月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/" itemprop="url">教程</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>教程</span></a></span></div></div><h1 class="post-title" itemprop="name headline">针对U8账套信息修改：SQL数据库修改教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-10-25T16:00:00.000Z" title="发表于 2026-10-26 00:00:00">2026-10-26</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-10-26T11:51:08.962Z" title="更新于 2026-10-26 19:51:08">2026-10-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="针对U8账套信息修改：SQL数据库修改教程"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为China"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>China</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://img-baofun.zhhainiao.com/fs/dff28a73d7bbdbbf36bdf0470c9049cd.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://fsp2026.qzz.io/2026/10/26/Modification_of_U8Sql/"><header><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/" itemprop="url">教程</a><a href="/tags/%E6%95%99%E7%A8%8B/" tabindex="-1" itemprop="url">教程</a><h1 id="CrawlerTitle" itemprop="name headline">针对U8账套信息修改：SQL数据库修改教程</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">FSP2020</span><time itemprop="dateCreated datePublished" datetime="2026-10-25T16:00:00.000Z" title="发表于 2026-10-26 00:00:00">2026-10-26</time><time itemprop="dateCreated datePublished" datetime="2026-10-26T11:51:08.962Z" title="更新于 2026-10-26 19:51:08">2026-10-26</time></header><h3 id="免责声明"><a href="#免责声明" class="headerlink" title="免责声明"></a>免责声明</h3><p>&emsp;&emsp;本教程 SQL 仅用于实训学习，禁止篡改数据，操作风险自行承担。</p>
+<h1 id="会计系统基本原理"><a href="#会计系统基本原理" class="headerlink" title="会计系统基本原理"></a>会计系统基本原理</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>&emsp;&emsp;在《会计信息系统》课程实训中，U8 账套依托 SQL Server 存储全部业务与日志数据。本文通过实操 SQL 语句，学习账套数据查询、复制与修改的底层操作，观察表之间关联关系，理解业务界面和数据库底层的数据映射逻辑，以此加深对数据库增删改查、事务、表结构的理解。本内容仅作为数据库技术学习资料。</p>
+<h2 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h2><p>U8v15; SQL 2008R Enterpise ;VMware Workstation Pro 17.5</p>
+<h1 id="SQL-Server-Management-Studio-基础入门"><a href="#SQL-Server-Management-Studio-基础入门" class="headerlink" title="SQL Server Management Studio 基础入门"></a>SQL Server Management Studio 基础入门</h1><p>&emsp;&emsp;SQL Server Management Studio，简称 <strong>SSMS</strong>，是微软官方提供的可视化数据库管理工具，用来连接、管理 SQL Server 数据库实例。U8 的账套业务数据、上机日志、凭证信息全部保存在 SQL Server 数据库中，我们就是通过 SSMS 连接后台数据库，执行 SQL 语句，完成数据查询、复制等实操练习。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img2.tofaka.com/autoupload/f/ak2ng/20261026/2UJu/1915X825/1.png" alt="图1"></p>
+<h2 id="在SSMS中定位账套"><a href="#在SSMS中定位账套" class="headerlink" title="在SSMS中定位账套"></a>在SSMS中定位账套</h2><p>&emsp;&emsp;完成登录后，在左侧【对象资源管理器】展开数据库节点。<br>U8数据库有固定命名规则：</p>
+<ul>
+<li><code>UFMeta_账套号</code>：账套元数据库，存储账套基础配置信息</li>
+<li><code>UFDATA_账套号_年度</code>：业务数据库，凭证、单据、上机日志等业务数据均存放于此</li>
+<li><code>UFSystem</code>：U8全局系统库，统一管理全部账套、操作员、权限信息</li>
+</ul>
+<p>选中本次实验对应的 <code>UFDATA_账套号_年度</code> 业务库，后续SQL脚本都需要在该库环境下执行，如图2所示。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img2.tofaka.com/autoupload/f/ak2ng/20261026/2vpt/725X705/2.png" alt="图2"></p>
+<h3 id="选中对应账套，新建命令行"><a href="#选中对应账套，新建命令行" class="headerlink" title="选中对应账套，新建命令行"></a>选中对应账套，新建命令行</h3><p>本文以账套号<code>123</code>为例，选中目标业务库 <code>UFDATA_123_2025</code> 后，点击顶部菜单栏的 <strong>新建查询(N)</strong>，打开T-SQL编辑窗口，在此窗口内编写并执行SQL语句。</p>
+<blockquote>
+<p>注意：确认上方数据库下拉框已经切换到目标业务库，避免SQL在错误数据库中执行。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img2.tofaka.com/autoupload/f/ak2ng/20261026/KXvl/1240X706/3.png" alt="图3"></p>
+<h1 id="SQL基本语法"><a href="#SQL基本语法" class="headerlink" title="SQL基本语法"></a>SQL基本语法</h1><p>本节以账套<code>123</code>（<code>UFDATA_123_2025</code>）为例，介绍在U8业务库中常用的T-SQL基础语句，包含查询、插入、更新、删除四类核心操作。<br> 重要提醒：<code>UPDATE</code>、<code>DELETE</code>语句具备修改、删除数据能力，仅允许在隔离虚拟机实训环境测试；正式环境严禁随意执行。</p>
+<h2 id="单引号-讲解"><a href="#单引号-讲解" class="headerlink" title="单引号 &#39;&#39; 讲解"></a>单引号 <code>&#39;&#39;</code> 讲解</h2><p>在 SQL Server（T-SQL）里面：</p>
+<ul>
+<li><strong>单引号 <code>&#39;</code></strong>：用来包裹<strong>字符串</strong>（用户名、文字、备注）</li>
+<li><strong>双引号 <code>&quot;</code></strong>：默认不是给字符串用的，一般用来包裹<strong>表名、字段名</strong>（标识符）<br>例子：</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> UA_Log_EX</span><br><span class="line"><span class="keyword">SET</span> cUser <span class="operator">=</span> <span class="string">&#x27;admin&#x27;</span></span><br><span class="line"><span class="keyword">WHERE</span> cUser <span class="operator">=</span> <span class="string">&#x27;test&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="SELECT-查询"><a href="#SELECT-查询" class="headerlink" title="SELECT 查询"></a>SELECT 查询</h2><p>用于读取表内数据，我们常用它查询上机日志、凭证记录：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询UA_Log_EX上机日志表前50条记录</span></span><br><span class="line"><span class="keyword">SELECT</span> TOP <span class="number">50</span> <span class="operator">*</span> <span class="keyword">FROM</span> UA_Log_EX;</span><br><span class="line"><span class="comment">-- 查询Ua_user中所有内容</span></span><br><span class="line"><span class="keyword">Select</span> <span class="operator">*</span> <span class="keyword">from</span> Ua_user</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img2.tofaka.com/autoupload/f/ak2ng/20261026/p3u7/1666X775/select.png" alt="图3"></p>
+<h3 id="FROM-关键字讲解"><a href="#FROM-关键字讲解" class="headerlink" title="FROM 关键字讲解"></a>FROM 关键字讲解</h3><p><code>FROM</code> 的作用：<strong>指定数据来自哪一张数据表</strong>。<br>语法结构：<code>SELECT 要查的字段 FROM 表名</code></p>
+<ul>
+<li><code>SELECT *</code>：代表取出这张表里<strong>所有字段</strong></li>
+<li><code>FROM UA_Log_EX</code>：告诉数据库，数据从 <code>UA_Log_EX</code>（上机日志表）里面拿</li>
+</ul>
+<h2 id="Update-语法"><a href="#Update-语法" class="headerlink" title="Update 语法"></a>Update 语法</h2><p><code>UPDATE</code> 用来修改表中已经存在的数据， <code>WHERE</code> 条件**；如果省略 <code>WHERE</code>，整张表所有行的数据都会被更新。<br>基础格式：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> 表名 <span class="keyword">SET</span> 字段名 <span class="operator">=</span> 新值 <span class="keyword">WHERE</span> 筛选条件;</span><br><span class="line">如 <span class="keyword">update</span> UA_User <span class="keyword">set</span> cUser_Name <span class="operator">=</span> <span class="string">&#x27;f&#x27;</span> <span class="keyword">where</span> cUser_Id <span class="operator">=</span> <span class="string">&#x27;CW01&#x27;</span></span><br><span class="line">这里将cUSer_ud为CW01列中的cUser_name改成了f</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img2.tofaka.com/autoupload/f/ak2ng/20261026/C2j3/1404X801/Update.png" alt="图4"></p>
+<h3 id="WHERE-关键字讲解"><a href="#WHERE-关键字讲解" class="headerlink" title="WHERE 关键字讲解"></a>WHERE 关键字讲解</h3><p><code>WHERE</code> 的作用：<strong>过滤行，只对满足条件的数据生效</strong>。<br><code>SELECT</code>、<code>UPDATE</code>、<code>DELETE</code> 都可以搭配 <code>WHERE</code>，没有 <code>WHERE</code> 就会作用于整张表，风险极高。</p>
+<p>语法逻辑：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">语句 表名</span><br><span class="line"><span class="keyword">SET</span><span class="operator">/</span><span class="keyword">SELECT</span> 内容</span><br><span class="line"><span class="keyword">WHERE</span> 条件;</span><br></pre></td></tr></table></figure>
+<h2 id="DELETE-语法"><a href="#DELETE-语法" class="headerlink" title="DELETE 语法"></a>DELETE 语法</h2><p><code>DELETE</code> 用于删除表里面的数据行，同样属于高危语句，<strong>必须配合 WHERE 使用</strong>。</p>
+<p>基础语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> 表名</span><br><span class="line"><span class="keyword">WHERE</span> 筛选条件;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="U8-SQL相关表"><a href="#U8-SQL相关表" class="headerlink" title="U8 SQL相关表"></a>U8 SQL相关表</h1><p>&emsp;&emsp;基于上述学习，我们掌握了 SELECT、UPDATE、DELETE 基础语法，记住核心规范：<strong>修改账套数据前，必须先用 SELECT 核对数据，确认无误再执行 UPDATE &#x2F; DELETE</strong>。下面介绍U8运维中高频用到的数据表，示例账套依旧使用 <code>123</code>。若有涉及到具体数值，可通过Select命名查看</p>
+<h2 id="UA-User（操作员表）"><a href="#UA-User（操作员表）" class="headerlink" title="UA_User（操作员表）"></a>UA_User（操作员表）</h2><p><strong>存放库：UFSystem（系统库，不是业务UFDATA库）</strong>，保存U8所有操作员账号、状态、账套主管标记。</p>
+<ul>
+<li>常用字段<ul>
+<li><code>cUser_Id</code>：操作员编码（登录账号）</li>
+<li><code>cUser_Name</code>：操作员姓名</li>
+<li><code>cPassword</code>：加密后的登录密码（<strong>不能直接明文改</strong>）</li>
+<li><code>iAdmin</code>：是否账套主管，<code>1=是</code>，<code>0=否</code></li>
+<li><code>nState</code>：账号停用标记，<code>0=启用</code>，<code>1=停用</code></li>
+</ul>
+</li>
+</ul>
+<p>注:若需要设置空密码，需令cpassword&#x3D; ‘2jmj7l5rSw0yVb&#x2F;vlWAYkK&#x2F;YBwk&#x3D;’<br>U8采用了哈希加密手段，若使用未加密的字符串，会导致账套无法登录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询全部操作员（先SELECT校验）</span></span><br><span class="line"><span class="keyword">SELECT</span> cUser_Id,cUser_Name,iAdmin,nState <span class="keyword">FROM</span> UA_User;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 启用被停用账号示例</span></span><br><span class="line"><span class="keyword">UPDATE</span> UA_User <span class="keyword">SET</span> nState <span class="operator">=</span> <span class="number">0</span> <span class="keyword">WHERE</span> cUser_Id <span class="operator">=</span> <span class="string">&#x27;CW01&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="UA-Log-EX（上机日志表）"><a href="#UA-Log-EX（上机日志表）" class="headerlink" title="UA_Log_EX（上机日志表）"></a>UA_Log_EX（上机日志表）</h2><p>前面练习用到的表，记录用户登录、退出、功能操作日志。</p>
+<ul>
+<li>常用字段<ul>
+<li><code>cUser</code>：操作员账号</li>
+<li><code>cOperation</code>：操作内容</li>
+<li><code>dDate</code>：操作日期</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询日志</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> UA_Log_EX</span><br></pre></td></tr></table></figure>
+<h2 id="UFSystem（系统库）"><a href="#UFSystem（系统库）" class="headerlink" title="UFSystem（系统库）"></a>UFSystem（系统库）</h2><h3 id="AccInformation（账套参数表）"><a href="#AccInformation（账套参数表）" class="headerlink" title="AccInformation（账套参数表）"></a>AccInformation（账套参数表）</h3><p>作用：保存账套全局配置、模块启用状态</p>
+<h3 id="UA-User（操作员表）-1"><a href="#UA-User（操作员表）-1" class="headerlink" title="UA_User（操作员表）"></a>UA_User（操作员表）</h3><p>作用：存放U8操作员账号、状态、账套主管标记<br>常用字段：</p>
+<ul>
+<li><code>cUser_Id</code>：操作员编码（登录账号）</li>
+<li><code>cUser_Name</code>：操作员姓名</li>
+<li><code>cPassword</code>：加密后的登录密码（单向SHA1+Base64+CHAR(3)，不能直接解密）</li>
+<li><code>iAdmin</code>：是否账套主管，<code>1=是</code>，<code>0=否</code></li>
+<li><code>nState</code>：账号停用标记，<code>0=启用</code>，<code>1=停用</code></li>
+</ul>
+<h3 id="UA-Role（角色表）"><a href="#UA-Role（角色表）" class="headerlink" title="UA_Role（角色表）"></a>UA_Role（角色表）</h3><p>作用：存放角色信息，配合分配权限<br>常用字段：</p>
+<ul>
+<li><code>cRole_Id</code>：角色编码</li>
+<li><code>cRole_Name</code>：角色名称</li>
+</ul>
+<h3 id="UA-RoleAuth（角色权限表）"><a href="#UA-RoleAuth（角色权限表）" class="headerlink" title="UA_RoleAuth（角色权限表）"></a>UA_RoleAuth（角色权限表）</h3><p>作用：保存角色对应的功能权限</p>
+<h3 id="UA-UserRole（用户角色关联表）"><a href="#UA-UserRole（用户角色关联表）" class="headerlink" title="UA_UserRole（用户角色关联表）"></a>UA_UserRole（用户角色关联表）</h3><p>作用：绑定操作员和所属角色</p>
+<hr>
+<h2 id="UFDATA-账套号-年度（业务库）"><a href="#UFDATA-账套号-年度（业务库）" class="headerlink" title="UFDATA_账套号_年度（业务库）"></a>UFDATA_账套号_年度（业务库）</h2><h3 id="UA-Log-EX（上机日志表）-1"><a href="#UA-Log-EX（上机日志表）-1" class="headerlink" title="UA_Log_EX（上机日志表）"></a>UA_Log_EX（上机日志表）</h3><p>作用：记录用户登录、退出、功能操作日志<br>常用字段：</p>
+<ul>
+<li><code>cUser</code>：操作员账号</li>
+<li><code>cOperation</code>：操作内容</li>
+<li><code>dDate</code>：操作日期</li>
+</ul>
+<h3 id="GL-accvouch（凭证及明细账表）"><a href="#GL-accvouch（凭证及明细账表）" class="headerlink" title="GL_accvouch（凭证及明细账表）"></a>GL_accvouch（凭证及明细账表）</h3><p>作用：总账核心财务表，存放记账凭证，修改风险极高<br>常用字段：</p>
+<ul>
+<li><code>i_id</code>：自增ID</li>
+<li><code>csign</code>：凭证类别</li>
+<li><code>ino_id</code>：凭证号</li>
+<li><code>ccode</code>：科目编码</li>
+</ul>
+<h3 id="DispatchList（发货单主表）"><a href="#DispatchList（发货单主表）" class="headerlink" title="DispatchList（发货单主表）"></a>DispatchList（发货单主表）</h3><p>作用：销售发货单表头数据</p>
+<h3 id="DispatchLists（发货单子表）"><a href="#DispatchLists（发货单子表）" class="headerlink" title="DispatchLists（发货单子表）"></a>DispatchLists（发货单子表）</h3><p>作用：销售发货单行明细</p>
+<h3 id="SaleBillVouch（销售发票主表）"><a href="#SaleBillVouch（销售发票主表）" class="headerlink" title="SaleBillVouch（销售发票主表）"></a>SaleBillVouch（销售发票主表）</h3><p>作用：销售专用&#x2F;普通发票表头</p>
+<h3 id="SaleBillVouchs（销售发票子表）"><a href="#SaleBillVouchs（销售发票子表）" class="headerlink" title="SaleBillVouchs（销售发票子表）"></a>SaleBillVouchs（销售发票子表）</h3><p>作用：销售发票明细行</p>
+<h3 id="RdRecord（出入库单主表）"><a href="#RdRecord（出入库单主表）" class="headerlink" title="RdRecord（出入库单主表）"></a>RdRecord（出入库单主表）</h3><p>作用：材料出入库、产成品入库单据表头</p>
+<h3 id="RdRecords（出入库单子表）"><a href="#RdRecords（出入库单子表）" class="headerlink" title="RdRecords（出入库单子表）"></a>RdRecords（出入库单子表）</h3><p>作用：出入库明细</p>
+<h3 id="Inventory（存货档案表）"><a href="#Inventory（存货档案表）" class="headerlink" title="Inventory（存货档案表）"></a>Inventory（存货档案表）</h3><p>作用：存货物料基础档案<br>常用字段：</p>
+<ul>
+<li><code>cInvCode</code>：存货编码</li>
+<li><code>cInvName</code>：存货名称<br>Department（部门档案表）<br>作用：部门基础资料<br>Person（职员档案表）<br>作用：员工、业务员档案<br>Customer（客户档案表）<br>作用：客户基础档案<br>Vendor（供应商档案表）<br>作用：供应商基础档案</li>
+</ul>
+<h3 id="往后涉及到的表可通过AI识别查询"><a href="#往后涉及到的表可通过AI识别查询" class="headerlink" title="往后涉及到的表可通过AI识别查询"></a>往后涉及到的表可通过AI识别查询</h3><h1 id="选中UFsystem或UFDATA-账套号-年度教程"><a href="#选中UFsystem或UFDATA-账套号-年度教程" class="headerlink" title="选中UFsystem或UFDATA_账套号_年度教程"></a>选中UFsystem或UFDATA_账套号_年度教程</h1><h2 id="切换到业务库（示例账套123，2025年度）"><a href="#切换到业务库（示例账套123，2025年度）" class="headerlink" title="切换到业务库（示例账套123，2025年度）"></a>切换到业务库（示例账套123，2025年度）</h2><p>在Ufsystem中输入</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Use [UFDATA_123_2025]</span><br><span class="line">go</span><br></pre></td></tr></table></figure>
+<p>该命名会跳转到业务库</p>
+<h2 id="手动打开"><a href="#手动打开" class="headerlink" title="手动打开"></a>手动打开</h2><p>具体方法同<strong>SSMS中定位账套</strong>所示</p>
+<h1 id="账套ID修改（修改备份lst导入法）"><a href="#账套ID修改（修改备份lst导入法）" class="headerlink" title="账套ID修改（修改备份lst导入法）"></a>账套ID修改（修改备份lst导入法）</h1><p>&emsp;&emsp;原理：U8的账套备份会生成 <code>UfErpAct.Lst</code>，这个文本文件里面记录了账套号、账套名称、年度等信息，修改里面的账套标识，再执行账套引入，就能以新账套号恢复。</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>正常在U8系统管理，对目标账套做【账套备份】，备份完成后，找到备份文件夹。<br>文件夹内一般有两个文件：<code>UfErpAct.Lst</code> + 数据库备份文件 <code>.BA_</code></li>
+<li>复制一份原备份整个文件夹做备份，右键 <code>UfErpAct.Lst</code>，用记事本&#x2F;VS Code打开。</li>
+<li>修改里面所有和账套号相关的参数<br>示例原始内容（账套001，改成002）：</li>
+</ol>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[BackUpInfo]</span></span><br><span class="line"><span class="attr">Version</span>=V16.<span class="number">00</span></span><br><span class="line"><span class="attr">cAcc_Id</span>=<span class="number">001</span></span><br><span class="line"><span class="attr">cAcc_Name</span> = 测试账套</span><br><span class="line"><span class="attr">iYear</span>=<span class="number">2025</span></span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img2.tofaka.com/autoupload/f/ak2ng/20261026/KNGL/1315X645/lst.png" alt="note"></p>
+<ul>
+<li><code>cAcc_Id</code>：账套号（核心，把旧账套号改成你想要的新账套号）</li>
+</ul>
+<ol start="4">
+<li>保存 <code>UfErpAct.Lst</code>，关闭编辑器。</li>
+<li>打开U8【系统管理】，admin登录，点击【账套】→【引入】，选中这个修改后的 <code>UfErpAct.Lst</code>，按照向导下一步导入。<br>导入成功后，就是新账套ID的账套。</li>
+</ol>
+<h3 id="常见踩坑"><a href="#常见踩坑" class="headerlink" title="常见踩坑"></a>常见踩坑</h3><ol>
+<li>编码问题：lst是ANSI编码，不要直接保存成UTF-8，会引入报错、引入失败。记事本保存时编码选 ANSI。</li>
+<li>账套号重复：目标新账套号不能在当前数据库已经存在，否则引入报错。</li>
+<li>年度账备份的lst和普通账套备份lst格式不一样，这个教程只适用于【账套备份】，<strong>不是年度账备份</strong>。<br>为什么不直接数据库update改账套ID<br>账套ID在UFSystem、各个UFDATA_xxx_年度几十张表都存在外键关联，直接SQL更新很容易出现档案、单据、权限错乱，后续查账、结账报错，极难修复。</li>
+</ol>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>&emsp;&emsp;本篇笔记整理了 U8 数据库相关的实操方法，包含数据库区分、底层数据修改、备份文件调整、文档排版与内部锚点等内容，仅作为个人技术学习、研究参考使用。U8 整套系统数据表之间存在大量隐藏关联、外键约束与业务校验逻辑，很多数据异常不会在操作完成的瞬间体现，常常延迟到凭证记账、月末结账、报表查询、年度结转的时候才暴露故障，排查难度极大，修复成本很高。<br>在有真实业务数据的生产环境中，优先使用 U8 前台界面、系统管理自带功能完成账套维护工作，尽量避免直接操作数据库、修改备份 Lst 文件这类绕过上层业务校验的手段。如果出于调试目的必须进行底层改动，一定要提前对整套账套做完整备份，并且单独留存一份备份文件，操作结束后逐项核对凭证、单据、余额表等核心数据，确认业务逻辑没有异常</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zh.minecraft.wiki/images/Bedrock_Dedicated_Server_Icon.png?0b213" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zh.minecraft.wiki/images/Bedrock_Dedicated_Server_Icon.png?0b213" title="头像" alt="头像"></a><div class="post-copyright__author_name">FSP2020</div><div class="post-copyright__author_desc">Record</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://fsp2026.qzz.io/2026/10/26/Modification_of_U8Sql/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://fsp2026.qzz.io/2026/10/26/Modification_of_U8Sql/')">针对U8账套信息修改：SQL数据库修改教程</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://fsp2026.qzz.io/2026/10/26/Modification_of_U8Sql/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=针对U8账套信息修改：SQL数据库修改教程&amp;url=https://fsp2026.qzz.io/2026/10/26/Modification_of_U8Sql/&amp;pic=https://img-baofun.zhhainiao.com/fs/dff28a73d7bbdbbf36bdf0470c9049cd.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://fsp2026.qzz.io" target="_blank">FSP2020个人博客</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E6%95%99%E7%A8%8B/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>教程<span class="tagsPageCount">2</span></a></div></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2026/06/05/Remark%20Written/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bee-reg-ab.imagency.cn/e/284cbe6b3e4e199966e31994208fb693.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">来日可有朝阳</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2026/04/05/Delay-update/" title="修改延长WIndows更新时间"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bee-reg-ab.imagency.cn/e/0f4d49ba83372b7e6561ed1c5e5efd57.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-04-05</div><div class="title">修改延长WIndows更新时间</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zh.minecraft.wiki/images/Bedrock_Dedicated_Server_Icon.png?0b213" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description">FSP2020的个人博客，工具折腾、学习心得与生活记录</div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E"><span class="toc-number">1.</span> <span class="toc-text">免责声明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BC%9A%E8%AE%A1%E7%B3%BB%E7%BB%9F%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">会计系统基本原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">2.1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%AF%8D"><span class="toc-number">2.2.</span> <span class="toc-text">关键词</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL-Server-Management-Studio-%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8"><span class="toc-number">3.</span> <span class="toc-text">SQL Server Management Studio 基础入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8SSMS%E4%B8%AD%E5%AE%9A%E4%BD%8D%E8%B4%A6%E5%A5%97"><span class="toc-number">3.1.</span> <span class="toc-text">在SSMS中定位账套</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E4%B8%AD%E5%AF%B9%E5%BA%94%E8%B4%A6%E5%A5%97%EF%BC%8C%E6%96%B0%E5%BB%BA%E5%91%BD%E4%BB%A4%E8%A1%8C"><span class="toc-number">3.1.1.</span> <span class="toc-text">选中对应账套，新建命令行</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">SQL基本语法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E5%BC%95%E5%8F%B7-%E8%AE%B2%E8%A7%A3"><span class="toc-number">4.1.</span> <span class="toc-text">单引号 &#39;&#39; 讲解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SELECT-%E6%9F%A5%E8%AF%A2"><span class="toc-number">4.2.</span> <span class="toc-text">SELECT 查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FROM-%E5%85%B3%E9%94%AE%E5%AD%97%E8%AE%B2%E8%A7%A3"><span class="toc-number">4.2.1.</span> <span class="toc-text">FROM 关键字讲解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Update-%E8%AF%AD%E6%B3%95"><span class="toc-number">4.3.</span> <span class="toc-text">Update 语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WHERE-%E5%85%B3%E9%94%AE%E5%AD%97%E8%AE%B2%E8%A7%A3"><span class="toc-number">4.3.1.</span> <span class="toc-text">WHERE 关键字讲解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DELETE-%E8%AF%AD%E6%B3%95"><span class="toc-number">4.4.</span> <span class="toc-text">DELETE 语法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#U8-SQL%E7%9B%B8%E5%85%B3%E8%A1%A8"><span class="toc-number">5.</span> <span class="toc-text">U8 SQL相关表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#UA-User%EF%BC%88%E6%93%8D%E4%BD%9C%E5%91%98%E8%A1%A8%EF%BC%89"><span class="toc-number">5.1.</span> <span class="toc-text">UA_User（操作员表）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UA-Log-EX%EF%BC%88%E4%B8%8A%E6%9C%BA%E6%97%A5%E5%BF%97%E8%A1%A8%EF%BC%89"><span class="toc-number">5.2.</span> <span class="toc-text">UA_Log_EX（上机日志表）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UFSystem%EF%BC%88%E7%B3%BB%E7%BB%9F%E5%BA%93%EF%BC%89"><span class="toc-number">5.3.</span> <span class="toc-text">UFSystem（系统库）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AccInformation%EF%BC%88%E8%B4%A6%E5%A5%97%E5%8F%82%E6%95%B0%E8%A1%A8%EF%BC%89"><span class="toc-number">5.3.1.</span> <span class="toc-text">AccInformation（账套参数表）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UA-User%EF%BC%88%E6%93%8D%E4%BD%9C%E5%91%98%E8%A1%A8%EF%BC%89-1"><span class="toc-number">5.3.2.</span> <span class="toc-text">UA_User（操作员表）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UA-Role%EF%BC%88%E8%A7%92%E8%89%B2%E8%A1%A8%EF%BC%89"><span class="toc-number">5.3.3.</span> <span class="toc-text">UA_Role（角色表）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UA-RoleAuth%EF%BC%88%E8%A7%92%E8%89%B2%E6%9D%83%E9%99%90%E8%A1%A8%EF%BC%89"><span class="toc-number">5.3.4.</span> <span class="toc-text">UA_RoleAuth（角色权限表）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UA-UserRole%EF%BC%88%E7%94%A8%E6%88%B7%E8%A7%92%E8%89%B2%E5%85%B3%E8%81%94%E8%A1%A8%EF%BC%89"><span class="toc-number">5.3.5.</span> <span class="toc-text">UA_UserRole（用户角色关联表）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UFDATA-%E8%B4%A6%E5%A5%97%E5%8F%B7-%E5%B9%B4%E5%BA%A6%EF%BC%88%E4%B8%9A%E5%8A%A1%E5%BA%93%EF%BC%89"><span class="toc-number">5.4.</span> <span class="toc-text">UFDATA_账套号_年度（业务库）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#UA-Log-EX%EF%BC%88%E4%B8%8A%E6%9C%BA%E6%97%A5%E5%BF%97%E8%A1%A8%EF%BC%89-1"><span class="toc-number">5.4.1.</span> <span class="toc-text">UA_Log_EX（上机日志表）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GL-accvouch%EF%BC%88%E5%87%AD%E8%AF%81%E5%8F%8A%E6%98%8E%E7%BB%86%E8%B4%A6%E8%A1%A8%EF%BC%89"><span class="toc-number">5.4.2.</span> <span class="toc-text">GL_accvouch（凭证及明细账表）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DispatchList%EF%BC%88%E5%8F%91%E8%B4%A7%E5%8D%95%E4%B8%BB%E8%A1%A8%EF%BC%89"><span class="toc-number">5.4.3.</span> <span class="toc-text">DispatchList（发货单主表）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DispatchLists%EF%BC%88%E5%8F%91%E8%B4%A7%E5%8D%95%E5%AD%90%E8%A1%A8%EF%BC%89"><span class="toc-number">5.4.4.</span> <span class="toc-text">DispatchLists（发货单子表）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SaleBillVouch%EF%BC%88%E9%94%80%E5%94%AE%E5%8F%91%E7%A5%A8%E4%B8%BB%E8%A1%A8%EF%BC%89"><span class="toc-number">5.4.5.</span> <span class="toc-text">SaleBillVouch（销售发票主表）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SaleBillVouchs%EF%BC%88%E9%94%80%E5%94%AE%E5%8F%91%E7%A5%A8%E5%AD%90%E8%A1%A8%EF%BC%89"><span class="toc-number">5.4.6.</span> <span class="toc-text">SaleBillVouchs（销售发票子表）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RdRecord%EF%BC%88%E5%87%BA%E5%85%A5%E5%BA%93%E5%8D%95%E4%B8%BB%E8%A1%A8%EF%BC%89"><span class="toc-number">5.4.7.</span> <span class="toc-text">RdRecord（出入库单主表）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RdRecords%EF%BC%88%E5%87%BA%E5%85%A5%E5%BA%93%E5%8D%95%E5%AD%90%E8%A1%A8%EF%BC%89"><span class="toc-number">5.4.8.</span> <span class="toc-text">RdRecords（出入库单子表）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Inventory%EF%BC%88%E5%AD%98%E8%B4%A7%E6%A1%A3%E6%A1%88%E8%A1%A8%EF%BC%89"><span class="toc-number">5.4.9.</span> <span class="toc-text">Inventory（存货档案表）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%80%E5%90%8E%E6%B6%89%E5%8F%8A%E5%88%B0%E7%9A%84%E8%A1%A8%E5%8F%AF%E9%80%9A%E8%BF%87AI%E8%AF%86%E5%88%AB%E6%9F%A5%E8%AF%A2"><span class="toc-number">5.4.10.</span> <span class="toc-text">往后涉及到的表可通过AI识别查询</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%89%E4%B8%ADUFsystem%E6%88%96UFDATA-%E8%B4%A6%E5%A5%97%E5%8F%B7-%E5%B9%B4%E5%BA%A6%E6%95%99%E7%A8%8B"><span class="toc-number">6.</span> <span class="toc-text">选中UFsystem或UFDATA_账套号_年度教程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E5%88%B0%E4%B8%9A%E5%8A%A1%E5%BA%93%EF%BC%88%E7%A4%BA%E4%BE%8B%E8%B4%A6%E5%A5%97123%EF%BC%8C2025%E5%B9%B4%E5%BA%A6%EF%BC%89"><span class="toc-number">6.1.</span> <span class="toc-text">切换到业务库（示例账套123，2025年度）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E6%89%93%E5%BC%80"><span class="toc-number">6.2.</span> <span class="toc-text">手动打开</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B4%A6%E5%A5%97ID%E4%BF%AE%E6%94%B9%EF%BC%88%E4%BF%AE%E6%94%B9%E5%A4%87%E4%BB%BDlst%E5%AF%BC%E5%85%A5%E6%B3%95%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">账套ID修改（修改备份lst导入法）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-number">7.1.</span> <span class="toc-text">步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E8%B8%A9%E5%9D%91"><span class="toc-number">7.1.1.</span> <span class="toc-text">常见踩坑</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/10/26/Modification_of_U8Sql/" title="针对U8账套信息修改：SQL数据库修改教程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img-baofun.zhhainiao.com/fs/dff28a73d7bbdbbf36bdf0470c9049cd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="针对U8账套信息修改：SQL数据库修改教程"/></a><div class="content"><a class="title" href="/2026/10/26/Modification_of_U8Sql/" title="针对U8账套信息修改：SQL数据库修改教程">针对U8账套信息修改：SQL数据库修改教程</a><time datetime="2026-10-25T16:00:00.000Z" title="发表于 2026-10-26 00:00:00">2026-10-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/06/05/Remark%20Written/" title="来日可有朝阳"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bee-reg-ab.imagency.cn/e/284cbe6b3e4e199966e31994208fb693.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="来日可有朝阳"/></a><div class="content"><a class="title" href="/2026/06/05/Remark%20Written/" title="来日可有朝阳">来日可有朝阳</a><time datetime="2026-06-04T18:53:00.000Z" title="发表于 2026-06-05 02:53:00">2026-06-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/06/02/Remark2/" title="Something Written"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bee-reg-ab.imagency.cn/e/4089287f60bfa208b31e6fec940ad14f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Something Written"/></a><div class="content"><a class="title" href="/2026/06/02/Remark2/" title="Something Written">Something Written</a><time datetime="2026-06-01T18:07:00.000Z" title="发表于 2026-06-02 02:07:00">2026-06-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/05/03/jsinstal/" title="超星自动滚动js"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bee-reg-ab.imagency.cn/e/f8627b964a01483d840f1ee9d2965aa6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="超星自动滚动js"/></a><div class="content"><a class="title" href="/2026/05/03/jsinstal/" title="超星自动滚动js">超星自动滚动js</a><time datetime="2026-05-02T16:00:00.000Z" title="发表于 2026-05-03 00:00:00">2026-05-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/05/Delay-update/" title="修改延长WIndows更新时间"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bee-reg-ab.imagency.cn/e/0f4d49ba83372b7e6561ed1c5e5efd57.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="修改延长WIndows更新时间"/></a><div class="content"><a class="title" href="/2026/04/05/Delay-update/" title="修改延长WIndows更新时间">修改延长WIndows更新时间</a><time datetime="2026-04-04T16:00:00.000Z" title="发表于 2026-04-05 00:00:00">2026-04-05</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2026 By <a class="footer-bar-link" href="/" title="FSP2020" target="_blank">FSP2020</a></div></div><div id="footer-type-tips"></div><div class="js-pjax"><script>function subtitleType () {
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      if (true) {
+        const from = '出自 ' + data.from
+        const sub = []
+        sub.unshift(data.hitokoto, from)
+        window.typed = new Typed('#footer-type-tips', {
+          strings: sub,
+          startDelay: 300,
+          typeSpeed: 150,
+          loop: true,
+          backSpeed: 50,
+        })
+      } else {
+        document.getElementById('footer-type-tips').innerHTML = data.hitokoto
+      }
+    })
+}
+
+if (true) {
+  if (typeof Typed === 'function') {
+    subtitleType()
+  } else {
+    getScript('https://cdn.cbd.int/typed.js@2.1.0/dist/typed.umd.js').then(subtitleType)
+  }
+} else {
+  subtitleType()
+}
+</script></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">7</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">FSO2020个人博客</div><div class="back-menu-list"><a class="back-menu-item" href="https://fsp2026.qzz.io/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="FSP2020"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="FSP2020"/><span class="back-menu-item-text">FSP2020</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/FS/" style="font-size: 0.88rem;">FS<sup>1</sup></a><a href="/tags/Knowledge/" style="font-size: 0.88rem;">Knowledge<sup>2</sup></a><a href="/tags/Share/" style="font-size: 0.88rem;">Share<sup>1</sup></a><a href="/tags/Story/" style="font-size: 0.88rem;">Story<sup>11</sup></a><a href="/tags/Tool/" style="font-size: 0.88rem;">Tool<sup>1</sup></a><a href="/tags/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/" style="font-size: 0.88rem;">我的世界<sup>1</sup></a><a href="/tags/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C%E8%81%94%E6%9C%BA%E4%BE%A0/" style="font-size: 0.88rem;">我的世界联机侠<sup>2</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 0.88rem;">教程<sup>2</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="17841074526" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.7.1",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 FSP2020 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://cdn.cbd.int/qrcodejs@1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
