@@ -304,13 +304,17 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.06);
             display: flex; justify-content: center; align-items: center;
             margin-bottom: 12px; overflow: hidden;
-            position: relative; /* 用于 loading */
+            position: relative;
             transition: transform 0.3s var(--ease-out);
         }
         .image-display-box:hover { transform: scale(1.02); }
         .image-display-box img { width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.4s ease; }
         .image-display-box img.loaded { opacity: 1; }
         
+        /* 骨架屏动画 */
+        .spinner { animation: spin 1s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
         /* 拼写提示区 */
         .spell-hint-area {
             display: flex; justify-content: center; gap: 4px; margin-bottom: 16px;
@@ -319,7 +323,7 @@
             width: 16px; height: 2px; background: rgba(60, 60, 67, 0.2); border-radius: 2px;
         }
 
-        /* 新增：识图点击后的释义面板 */
+        /* 识图点击后的释义面板 */
         .meaning-panel {
             margin-top: 15px;
             padding: 16px 20px;
@@ -444,35 +448,36 @@
 </div>
 
 <script>
-    // ================= 数据与图片直链 (精调版) =================
+    // ================= 数据与图片直链 =================
     const ICONS = {
         speaker: `<svg class="speaker-svg" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>`
     };
 
-    // 为确保识图游戏的质量，特意挑选了极具代表性的具象图片
     const VOCAB = {
         1: [
-            { word: "tense", phonetic: "/tens/", pos: "adj.", meaning: "紧张的", example: "all-night session 通宵会议", image: "https://images.unsplash.com/photo-1599818817997-4f39f932b9e0?w=400&q=80" }, // 拉满的弓/紧绷的弦 (隐喻紧张)
-            { word: "session", phonetic: "/ˈseʃn/", pos: "n.", meaning: "会议，会期", example: "The UN session was historic.", image: "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?w=400&q=80" }, // 会议室
-            { word: "hazardous", phonetic: "/ˈhæzədəs/", pos: "adj.", meaning: "有害的，危险的", example: "hazardous substances", image: "https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=400&q=80" }, // 危险警告标志
-            { word: "substances", phonetic: "/ˈsʌbstənsɪz/", pos: "n.", meaning: "物质", example: "toxic substances", image: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&q=80" }, // 化学试剂瓶
-            { word: "auspices", phonetic: "/ˈɔːspɪsɪz/", pos: "n.", meaning: "赞助，主持", example: "under the auspices of...", image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&q=80" }, // 握手/签约 (赞助支持)
-            { word: "historic", phonetic: "/hɪˈstɒrɪk/", pos: "adj.", meaning: "历史性的", example: "a historic moment", image: "https://images.unsplash.com/photo-1461360370896-922624d12aa1?w=400&q=80" }, // 博物馆/古建筑
-            { word: "pesticides", phonetic: "/ˈpestɪsaɪdz/", pos: "n.", meaning: "杀虫剂；农药", example: "harmful pesticides", image: "https://images.unsplash.com/photo-1599420186946-7b6fb4e297f0?w=400&q=80" }, // 农药喷洒
-            { word: "toxic", phonetic: "/ˈtɒksɪk/", pos: "adj.", meaning: "有毒的", example: "toxic chemicals", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=80" }, // 防毒面具/有害环境
-            { word: "degrade", phonetic: "/dɪˈɡreɪd/", pos: "v.", meaning: "降解；退化", example: "does not degrade easily", image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&q=80" } // 垃圾回收/腐烂
+            // 更换了一张表达人极度焦虑/紧张/压力的图片
+            { word: "tense", phonetic: "/tens/", pos: "adj.", meaning: "紧张的", example: "all-night session 通宵会议", image: "https://images.unsplash.com/photo-1493836512294-502baa1986e2?w=400&q=80" },
+            { word: "session", phonetic: "/ˈseʃn/", pos: "n.", meaning: "会议，会期", example: "The UN session was historic.", image: "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?w=400&q=80" },
+            { word: "hazardous", phonetic: "/ˈhæzədəs/", pos: "adj.", meaning: "有害的，危险的", example: "hazardous substances", image: "https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=400&q=80" },
+            { word: "substances", phonetic: "/ˈsʌbstənsɪz/", pos: "n.", meaning: "物质", example: "toxic substances", image: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&q=80" },
+            { word: "auspices", phonetic: "/ˈɔːspɪsɪz/", pos: "n.", meaning: "赞助，主持", example: "under the auspices of...", image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&q=80" },
+            { word: "historic", phonetic: "/hɪˈstɒrɪk/", pos: "adj.", meaning: "历史性的", example: "a historic moment", image: "https://images.unsplash.com/photo-1461360370896-922624d12aa1?w=400&q=80" },
+            // 更换为正在向植物喷洒农药的图片
+            { word: "pesticides", phonetic: "/ˈpestɪsaɪdz/", pos: "n.", meaning: "杀虫剂；农药", example: "harmful pesticides", image: "https://images.unsplash.com/photo-1629853495608-a5f2b6bc9ad9?w=400&q=80" },
+            { word: "toxic", phonetic: "/ˈtɒksɪk/", pos: "adj.", meaning: "有毒的", example: "toxic chemicals", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=80" },
+            { word: "degrade", phonetic: "/dɪˈɡreɪd/", pos: "v.", meaning: "降解；退化", example: "does not degrade easily", image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&q=80" }
         ],
         2: [
-            { word: "reef", phonetic: "/riːf/", pos: "n.", meaning: "礁，礁石", example: "the Great Barrier Reef 大堡礁", image: "https://images.unsplash.com/photo-1546026423-cc4642628d2b?w=400&q=80" }, // 水下珊瑚礁
-            { word: "brunt", phonetic: "/brʌnt/", pos: "n.", meaning: "冲击，主要压力", example: "bear the brunt of 承受...", image: "https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=400&q=80" }, // 巨浪拍击岩石
-            { word: "bleaching", phonetic: "/ˈbliːtʃɪŋ/", pos: "n.", meaning: "漂白；白化", example: "coral bleaching 珊瑚白化", image: "https://images.unsplash.com/photo-1582967788606-a171c1080cb0?w=400&q=80" }, // 白化的珊瑚
-            { word: "coral", phonetic: "/ˈkɒrəl/", pos: "n.", meaning: "珊瑚；珊瑚虫", example: "sensitive coral", image: "https://images.unsplash.com/photo-1518467166778-b88f373ffec7?w=400&q=80" }, // 色彩鲜艳的珊瑚
-            { word: "wither", phonetic: "/ˈwɪðə(r)/", pos: "v.", meaning: "枯萎，退化", example: "The coral withered.", image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=400&q=80" }, // 枯树枝/落叶
-            { word: "sedimentation", phonetic: "/ˌsedɪmenˈteɪʃn/", pos: "n.", meaning: "沉积，淤积", example: "heavy sedimentation", image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&q=80" }, // 泥沙沉积的河床
-            { word: "smother", phonetic: "/ˈsmʌðə(r)/", pos: "v.", meaning: "覆盖；使窒息", example: "smothered by seaweed", image: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=400&q=80" }, // 浓雾/厚重云雾覆盖
-            { word: "overgrow", phonetic: "/ˌəʊvəˈɡrəʊ/", pos: "v.", meaning: "蔓生，过度生长", example: "seaweed that overgrew", image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=400&q=80" }, // 爬满墙的藤蔓
-            { word: "inflict", phonetic: "/ɪnˈflɪkt/", pos: "v.", meaning: "使遭受", example: "damage inflicted by...", image: "https://images.unsplash.com/photo-1517420704952-d9f39e95b43e?w=400&q=80" }, // 破碎/废墟 (隐喻伤害)
-            { word: "premier", phonetic: "/ˈpremiə(r)/", pos: "adj.", meaning: "首要的，顶级的", example: "premier tourist attractions", image: "https://images.unsplash.com/photo-1565372195458-9de0b320ef04?w=400&q=80" } // 皇冠/奖杯
+            { word: "reef", phonetic: "/riːf/", pos: "n.", meaning: "礁，礁石", example: "the Great Barrier Reef 大堡礁", image: "https://images.unsplash.com/photo-1546026423-cc4642628d2b?w=400&q=80" },
+            { word: "brunt", phonetic: "/brʌnt/", pos: "n.", meaning: "冲击，主要压力", example: "bear the brunt of 承受...", image: "https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=400&q=80" },
+            { word: "bleaching", phonetic: "/ˈbliːtʃɪŋ/", pos: "n.", meaning: "漂白；白化", example: "coral bleaching 珊瑚白化", image: "https://images.unsplash.com/photo-1582967788606-a171c1080cb0?w=400&q=80" },
+            { word: "coral", phonetic: "/ˈkɒrəl/", pos: "n.", meaning: "珊瑚；珊瑚虫", example: "sensitive coral", image: "https://images.unsplash.com/photo-1518467166778-b88f373ffec7?w=400&q=80" },
+            { word: "wither", phonetic: "/ˈwɪðə(r)/", pos: "v.", meaning: "枯萎，退化", example: "The coral withered.", image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=400&q=80" },
+            { word: "sedimentation", phonetic: "/ˌsedɪmenˈteɪʃn/", pos: "n.", meaning: "沉积，淤积", example: "heavy sedimentation", image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&q=80" },
+            { word: "smother", phonetic: "/ˈsmʌðə(r)/", pos: "v.", meaning: "覆盖；使窒息", example: "smothered by seaweed", image: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=400&q=80" },
+            { word: "overgrow", phonetic: "/ˌəʊvəˈɡrəʊ/", pos: "v.", meaning: "蔓生，过度生长", example: "seaweed that overgrew", image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=400&q=80" },
+            { word: "inflict", phonetic: "/ɪnˈflɪkt/", pos: "v.", meaning: "使遭受", example: "damage inflicted by...", image: "https://images.unsplash.com/photo-1517420704952-d9f39e95b43e?w=400&q=80" },
+            { word: "premier", phonetic: "/ˈpremiə(r)/", pos: "adj.", meaning: "首要的，顶级的", example: "premier tourist attractions", image: "https://images.unsplash.com/photo-1565372195458-9de0b320ef04?w=400&q=80" }
         ]
     };
 
@@ -648,17 +653,19 @@
         quizTimer = setTimeout(nextQuiz, 1800);
     }
 
-    // ================= 游戏 2：识图辨词 (严格过滤与提示) =================
+    // ================= 游戏 2：识图辨词 (加入排除已答对词汇的算法) =================
     let imageQuizScore = 0;
+    let imageQuizCorrectWords = []; // 记录已答对的词汇
     let currentImageQuiz = null;
     let imgQuizTimer = null;
 
     function startImageQuiz() {
         imageQuizScore = 0;
+        imageQuizCorrectWords = []; // 重置已答对记录
         openModal(`
             <button class="modal-close" onclick="closeModal()">&times;</button>
             <div class="modal-title">识图辨词</div>
-            <div class="modal-hint">根据图像选择正确的英文单词</div>
+            <div class="modal-hint">已答对的单词不再出现</div>
             <div class="image-quiz-container">
                 <div class="image-display-box" id="imageTarget">
                     <!-- 骨架屏 -->
@@ -687,9 +694,21 @@
         const opts = document.getElementById("imageQuizOptions");
         opts.innerHTML = "";
         
-        // 过滤掉没有图片的词汇，保证识图游戏的质量
-        const validWords = allGameWords.filter(w => w.image);
-        currentImageQuiz = validWords[Math.floor(Math.random() * validWords.length)];
+        // 过滤出未答对的词汇
+        const availableWords = allGameWords.filter(w => w.image && !imageQuizCorrectWords.includes(w.word));
+        
+        // 如果全部都答对了
+        if (availableWords.length === 0) {
+            document.getElementById("imgQuizFeedback").textContent = "🏆 全部掌握！";
+            document.getElementById("imgQuizFeedback").style.color = "var(--success)";
+            imgQuizTimer = setTimeout(() => {
+                closeModal();
+                alert(`恭喜你，所有识图词汇已全部掌握！最终得分：${imageQuizScore}`);
+            }, 2000);
+            return;
+        }
+
+        currentImageQuiz = availableWords[Math.floor(Math.random() * availableWords.length)];
         
         // 渲染图片与骨架屏动画
         const imgBox = document.getElementById("imageTarget");
@@ -711,10 +730,11 @@
             hintArea.appendChild(dash);
         }
 
-        // 生成选项
+        // 生成选项（干扰项依然从全部词库中取）
         const choices = [currentImageQuiz.word];
+        const allValidWords = allGameWords.filter(w => w.image);
         while (choices.length < 4) {
-            const w = validWords[Math.floor(Math.random() * validWords.length)].word;
+            const w = allValidWords[Math.floor(Math.random() * allValidWords.length)].word;
             if (!choices.includes(w)) choices.push(w);
         }
         choices.sort(() => Math.random() - 0.5);
@@ -741,6 +761,11 @@
             imageQuizScore += 10;
             document.getElementById("imgScoreDisplay").textContent = imageQuizScore;
             speak(null, chosen);
+            
+            // 记录答对的词，后续不再出现
+            if (!imageQuizCorrectWords.includes(currentImageQuiz.word)) {
+                imageQuizCorrectWords.push(currentImageQuiz.word);
+            }
         } else {
             btn.classList.add("wrong");
             document.getElementById("imgQuizFeedback").textContent = "WRONG";
