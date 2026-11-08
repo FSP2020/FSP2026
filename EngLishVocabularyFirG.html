@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>词汇工作台 · Liquid Glass</title>
+    <style>
+        /* 引入 Inter 字体 */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        :root {
+            --ink: #1c1c1e;
+            --ink-soft: #48484a;
+            --muted: #8e8e93;
+            --accent: #007aff;
+            --accent-soft: rgba(0, 122, 255, 0.08);
+            --success: #34c759;
+            --danger: #ff3b30;
+            --warning: #ff9500;
+
+            /* Liquid Glass 核心参数 */
+            --glass-bg: rgba(255, 255, 255, 0.55);
+            --glass-bg-strong: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.7);
+            --glass-border-soft: rgba(255, 255, 255, 0.35);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+            --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.85);
+
+            --sidebar-w: 260px;
+            --radius-lg: 20px;
+            --radius-md: 14px;
+
+            /* 动画曲线 */
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", sans-serif;
+            color: var(--ink);
+            line-height: 1.5;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background:
+                radial-gradient(55% 65% at 18% 22%, rgba(175, 82, 222, 0.12) 0%, transparent 60%),
+                radial-gradient(50% 60% at 85% 75%, rgba(0, 122, 255, 0.10) 0%, transparent 65%),
+                radial-gradient(40% 50% at 65% 15%, rgba(52, 199, 89, 0.08) 0%, transparent 60%),
+                #f5f5f7;
+            background-attachment: fixed;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        button {
+            font-family: inherit;
+            border: none;
+            background: none;
+            cursor: pointer;
+            color: inherit;
+            outline: none;
+        }
+
+        svg {
+            display: block;
+        }
+
+        /* ========== 布局：侧边栏 + 主工作区 ========== */
+        .app-shell {
+            display: grid;
+            grid-template-columns: var(--sidebar-w) 1fr;
+            min-height: 100vh;
+        }
+
+        /* ---------- 侧边栏 ---------- */
+        .sidebar {
+            margin: 16px;
+            margin-right: 0;
+            position: sticky;
+            top: 16px;
+            height: calc(100vh - 32px);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 24px 16px;
+            border-radius: var(--radius-lg);
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px) saturate(1.6);
+            -webkit-backdrop-filter: blur(24px) saturate(1.6);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow), var(--glass-highlight);
+            z-index: 50;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0 8px 24px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -0.03em;
+        }
+
+        .brand-mark {
+            width: 24px;
+            height: 24px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #007aff, #af52de);
+            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
+        }
+
+        .nav-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .nav-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+            padding: 16px 10px 8px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--ink-soft);
+            transition: all 0.2s var(--ease-out);
+            text-align: left;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.6);
+            opacity: 0;
+            transition: opacity 0.2s var(--ease-out);
+            z-index: -1;
+        }
+
+        .nav-item:hover { color: var(--ink); }
+        .nav-item:hover::before { opacity: 1; }
+
+        .nav-item.active {
+            color: var(--accent);
+            font-weight: 600;
+            background: var(--glass-bg-strong);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03), var(--glass-highlight);
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 15%;
+            height: 70%;
+            width: 3px;
+            background: var(--accent);
+            border-radius: 0 4px 4px 0;
+            animation: slideInLeft 0.3s var(--ease-out) forwards;
+        }
+
+        @keyframes slideInLeft { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+
+        .nav-item .icon {
+            width: 18px; height: 18px;
+            flex-shrink: 0;
+            stroke: currentColor; stroke-width: 2; fill: none;
+            stroke-linecap: round; stroke-linejoin: round;
+            transition: transform 0.3s var(--ease-out);
+        }
+        .nav-item:hover .icon { transform: translateX(2px); }
+
+        .sidebar-search {
+            margin-top: auto; padding-top: 16px;
+            border-top: 1px solid rgba(60, 60, 67, 0.08);
+        }
+
+        .search-input {
+            width: 100%; padding: 10px 12px 10px 36px;
+            border-radius: 10px; border: 1px solid rgba(60, 60, 67, 0.12);
+            background: rgba(255, 255, 255, 0.5); font-size: 0.85rem; color: var(--ink);
+            outline: none; transition: all 0.3s var(--ease-out);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%238e8e93' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: 12px center;
+        }
+        .search-input:focus { border-color: var(--accent); background-color: rgba(255, 255, 255, 0.9); box-shadow: 0 0 0 3px var(--accent-soft); }
+
+        /* ---------- 主工作区 ---------- */
+        .workspace { padding: 24px 32px 40px 24px; min-width: 0; }
+        .workspace-header { margin-bottom: 24px; }
+        .workspace-title { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.04em; color: var(--ink); }
+        .workspace-sub { font-size: 0.85rem; color: var(--muted); margin-top: 4px; font-weight: 400; }
+
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+
+        /* ========== Liquid Glass 单词卡片 ========== */
+        .word-card { perspective: 1200px; height: 220px; cursor: pointer; }
+        .word-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s var(--ease-out); transform-style: preserve-3d; }
+        .word-card.flipped .word-card-inner { transform: rotateY(180deg) translateY(-4px); }
+
+        .word-card-front, .word-card-back {
+            position: absolute; inset: 0; border-radius: var(--radius-md);
+            -webkit-backface-visibility: hidden; backface-visibility: hidden;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 20px; background: var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(1.6); -webkit-backdrop-filter: blur(20px) saturate(1.6);
+            border: 1px solid var(--glass-border-soft);
+            box-shadow: var(--glass-shadow), var(--glass-highlight);
+            transition: border-color 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+        }
+        .word-card:hover .word-card-front { border-color: rgba(0, 122, 255, 0.3); box-shadow: 0 10px 40px rgba(0, 122, 255, 0.08), var(--glass-highlight); }
+
+        .word-card-back { transform: rotateY(180deg); background: var(--glass-bg-strong); justify-content: flex-start; align-items: flex-start; text-align: left; overflow-y: auto; border-top: 3px solid var(--success); }
+
+        .word-main { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 6px; }
+        .word-meta { font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 0.8rem; color: var(--muted); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .word-pos { font-size: 0.7rem; background: rgba(60, 60, 67, 0.06); padding: 2px 6px; border-radius: 4px; color: var(--ink-soft); font-family: 'Inter', sans-serif; }
+
+        .word-speaker { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(60, 60, 67, 0.04); cursor: pointer; transition: all 0.2s var(--ease-out); position: relative; }
+        .word-speaker:hover { background: rgba(0, 122, 255, 0.1); color: var(--accent); }
+        .speaker-svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .word-speaker.playing::after { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--accent); animation: ripple 0.8s linear infinite; }
+        @keyframes ripple { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.8); opacity: 0; } }
+
+        .word-mastery { position: absolute; top: 14px; right: 14px; font-size: 0.7rem; font-weight: 600; padding: 4px 10px; border-radius: 20px; background: rgba(60, 60, 67, 0.06); color: var(--muted); transition: all 0.2s var(--ease-out); }
+        .word-mastery:hover { background: rgba(60, 60, 67, 0.1); }
+        .word-mastery.is-mastered { background: var(--success); color: #fff; border-color: var(--success); }
+
+        .word-meaning { font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-bottom: 10px; line-height: 1.4; }
+        .word-example { font-size: 0.85rem; color: var(--ink-soft); font-style: italic; line-height: 1.6; background: rgba(255, 255, 255, 0.6); padding: 10px 12px; border-radius: 8px; width: 100%; border-left: 2px solid var(--accent); }
+
+        /* ========== 游戏模态框 ========== */
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 20px; opacity: 0; transition: opacity 0.3s var(--ease-out); }
+        .modal-overlay.open { display: flex; opacity: 1; }
+
+        .glass-modal {
+            width: 100%; max-width: 560px; max-height: 88vh; overflow-y: auto; padding: 32px;
+            border-radius: var(--radius-lg); background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(32px) saturate(1.8); -webkit-backdrop-filter: blur(32px) saturate(1.8);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.1), var(--glass-highlight);
+            position: relative; transform: translateY(15px) scale(0.98);
+            transition: transform 0.4s var(--ease-out);
+        }
+        .modal-overlay.open .glass-modal { transform: translateY(0) scale(1); }
+        .glass-modal::before { content: ''; position: absolute; top: 0; left: 0; height: 2px; width: 100%; background: linear-gradient(90deg, transparent, var(--accent), transparent); transform: scaleX(0); transition: transform 0.6s var(--ease-out) 0.2s; }
+        .modal-overlay.open .glass-modal::before { transform: scaleX(1); }
+
+        .modal-close { position: absolute; top: 16px; right: 18px; font-size: 1.4rem; color: var(--muted); padding: 4px; transition: color 0.2s; }
+        .modal-close:hover { color: var(--ink); }
+        .modal-title { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 4px; }
+        .modal-hint { font-size: 0.8rem; color: var(--muted); margin-bottom: 24px; font-weight: 400; }
+
+        /* 通用游戏选项样式 */
+        .game-option {
+            display: flex; justify-content: space-between; align-items: center;
+            width: 100%; padding: 14px 18px; margin-bottom: 10px; border-radius: 12px;
+            background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(60, 60, 67, 0.08);
+            font-size: 0.95rem; font-weight: 500; transition: all 0.25s var(--ease-out);
+            text-align: left; position: relative; overflow: hidden;
+        }
+        .game-option::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); transform: scaleY(0); transition: transform 0.2s var(--ease-out); }
+        .game-option:hover { background: rgba(255, 255, 255, 0.9); border-color: rgba(0, 122, 255, 0.2); }
+        .game-option:hover::before { transform: scaleY(1); }
+        .game-option.correct { background: var(--success); color: #fff; border-color: var(--success); }
+        .game-option.correct::before { background: transparent; }
+        .game-option.wrong { background: var(--danger); color: #fff; border-color: var(--danger); animation: shake 0.4s var(--ease-in-out); }
+        .game-option.wrong::before { background: transparent; }
+        
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+
+        .game-option .keycap { font-family: "SF Mono", monospace; font-size: 0.75rem; padding: 2px 8px; border-radius: 5px; background: rgba(0, 0, 0, 0.05); color: var(--muted); }
+        .game-option.correct .keycap, .game-option.wrong .keycap { background: rgba(255, 255, 255, 0.2); color: rgba(255, 255, 255, 0.9); }
+
+        .quiz-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 24px; font-size: 0.85rem; color: var(--muted); font-family: "SF Mono", monospace; }
+        .quiz-score { font-weight: 700; color: var(--accent); }
+
+        /* ========== 识图游戏专属样式 ========== */
+        .image-quiz-container {
+            display: flex; flex-direction: column; align-items: center; margin-bottom: 20px;
+        }
+        .image-display-box {
+            width: 100%; height: 200px; border-radius: 16px;
+            background: #f0f0f5; border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            display: flex; justify-content: center; align-items: center;
+            margin-bottom: 12px; overflow: hidden;
+            position: relative; /* 用于 loading */
+            transition: transform 0.3s var(--ease-out);
+        }
+        .image-display-box:hover { transform: scale(1.02); }
+        .image-display-box img { width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.4s ease; }
+        .image-display-box img.loaded { opacity: 1; }
+        
+        /* 拼写提示区 */
+        .spell-hint-area {
+            display: flex; justify-content: center; gap: 4px; margin-bottom: 16px;
+        }
+        .spell-hint-dash {
+            width: 16px; height: 2px; background: rgba(60, 60, 67, 0.2); border-radius: 2px;
+        }
+
+        /* 新增：识图点击后的释义面板 */
+        .meaning-panel {
+            margin-top: 15px;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border-soft);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s var(--ease-out);
+            pointer-events: none;
+            text-align: left;
+            max-height: 0;
+            overflow: hidden;
+        }
+        .meaning-panel.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+            max-height: 200px;
+        }
+        .mp-word { font-size: 1.2rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+        .mp-meta { font-family: 'SF Mono', monospace; font-size: 0.8rem; color: var(--muted); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+        .mp-meaning { font-size: 1rem; font-weight: 600; color: var(--accent); margin-bottom: 10px; }
+        .mp-example { font-size: 0.85rem; font-style: italic; color: var(--ink-soft); border-left: 2px solid var(--accent); padding-left: 10px; line-height: 1.5; }
+
+        /* 拼写 */
+        .spell-target { text-align: center; font-size: 1.25rem; font-weight: 600; padding: 16px 0 24px; }
+        .spell-answer-row { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; min-height: 48px; padding: 12px 0; border-bottom: 1px dashed rgba(60, 60, 67, 0.15); margin-bottom: 24px; }
+        .spell-tile { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 1.2rem; font-weight: 700; background: var(--accent); color: #fff; cursor: pointer; user-select: none; transition: all 0.2s var(--ease-out); box-shadow: 0 2px 6px rgba(0, 122, 255, 0.2); }
+        .spell-tile:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3); }
+        .spell-tile.placeholder { background: rgba(60, 60, 67, 0.05); color: transparent; box-shadow: none; cursor: default; border: 1px dashed rgba(60, 60, 67, 0.2); }
+        .spell-tile.placeholder:hover { transform: none; box-shadow: none; }
+        .spell-pool { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+        .spell-feedback { text-align: center; font-size: 0.9rem; font-weight: 600; min-height: 24px; font-family: "SF Mono", monospace; }
+
+        /* 单词雨 */
+        .rain-modal { max-width: 720px; padding: 0; overflow: hidden; display: flex; flex-direction: column; height: 580px; }
+        .rain-topbar { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: rgba(255, 255, 255, 0.6); border-bottom: 1px solid rgba(60, 60, 67, 0.08); font-size: 0.9rem; font-weight: 600; font-family: "SF Mono", monospace; }
+        .rain-target-bar { padding: 16px; text-align: center; font-size: 1.2rem; font-weight: 700; background: var(--accent-soft); color: var(--accent); border-bottom: 1px solid rgba(0, 122, 255, 0.1); }
+        .rain-stage { flex: 1; position: relative; overflow: hidden; background: radial-gradient(circle at 30% 40%, rgba(0, 122, 255, 0.05), transparent 60%), radial-gradient(circle at 70% 70%, rgba(175, 82, 222, 0.04), transparent 60%), rgba(255, 255, 255, 0.4); }
+        .falling-word { position: absolute; padding: 8px 18px; border-radius: 20px; font-size: 0.95rem; font-weight: 600; background: rgba(255, 255, 255, 0.95); border: 1px solid rgba(0, 122, 255, 0.2); color: var(--ink); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); cursor: pointer; white-space: nowrap; transition: all 0.2s var(--ease-out); }
+        .falling-word:hover { transform: scale(1.08); background: #fff; border-color: var(--accent); box-shadow: 0 6px 20px rgba(0, 122, 255, 0.15); }
+
+        /* 响应式 */
+        @media (max-width: 900px) {
+            .app-shell { grid-template-columns: 1fr; }
+            .sidebar { position: static; height: auto; margin: 12px 16px 0; flex-direction: row; flex-wrap: wrap; align-items: center; padding: 12px 16px; }
+            .brand { padding: 4px 8px; margin-right: auto; }
+            .nav-group { flex-direction: row; flex-wrap: wrap; }
+            .nav-label { display: none; }
+            .nav-item { width: auto; padding: 8px 12px; }
+            .sidebar-search { margin-top: 0; padding-top: 0; border-top: none; flex: 1; min-width: 200px; }
+            .workspace { padding: 20px 16px; }
+        }
+        @media (max-width: 520px) {
+            .card-grid { grid-template-columns: 1fr; }
+            .rain-modal { height: 80vh; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-shell">
+    <!-- 侧边栏 -->
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-mark"></div>
+            <span>词汇工作台</span>
+        </div>
+
+        <div class="nav-group">
+            <div class="nav-label">听力材料</div>
+            <button class="nav-item active" data-news="1" onclick="switchNews(1)">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                POPs · 持久性污染物
+            </button>
+            <button class="nav-item" data-news="2" onclick="switchNews(2)">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M2 12h20M12 2v20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg>
+                大堡礁 · 珊瑚白化
+            </button>
+        </div>
+
+        <div class="nav-group">
+            <div class="nav-label">互动练习</div>
+            <button class="nav-item" onclick="startQuiz()">
+                <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                词汇闯关
+            </button>
+            <button class="nav-item" onclick="startImageQuiz()">
+                <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                识图辨词
+            </button>
+            <button class="nav-item" onclick="startSpelling()">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>
+                拼写挑战
+            </button>
+            <button class="nav-item" onclick="startRain()">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                单词雨
+            </button>
+        </div>
+
+        <div class="sidebar-search">
+            <input type="text" class="search-input" id="searchInput" placeholder="搜索单词或释义..." oninput="filterCards()">
+        </div>
+    </aside>
+
+    <!-- 主工作区 -->
+    <main class="workspace">
+        <div class="workspace-header">
+            <div class="workspace-title" id="workspaceTitle">POPs · 持久性污染物</div>
+            <div class="workspace-sub" id="workspaceSub">点击卡片翻转释义 / 点击声波图标听发音</div>
+        </div>
+        <div class="card-grid" id="cardGrid"></div>
+    </main>
+</div>
+
+<!-- 游戏模态框容器 -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="glass-modal" id="modalContent"></div>
+</div>
+
+<script>
+    // ================= 数据与图片直链 (精调版) =================
+    const ICONS = {
+        speaker: `<svg class="speaker-svg" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>`
+    };
+
+    // 为确保识图游戏的质量，特意挑选了极具代表性的具象图片
+    const VOCAB = {
+        1: [
+            { word: "tense", phonetic: "/tens/", pos: "adj.", meaning: "紧张的", example: "all-night session 通宵会议", image: "https://images.unsplash.com/photo-1599818817997-4f39f932b9e0?w=400&q=80" }, // 拉满的弓/紧绷的弦 (隐喻紧张)
+            { word: "session", phonetic: "/ˈseʃn/", pos: "n.", meaning: "会议，会期", example: "The UN session was historic.", image: "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?w=400&q=80" }, // 会议室
+            { word: "hazardous", phonetic: "/ˈhæzədəs/", pos: "adj.", meaning: "有害的，危险的", example: "hazardous substances", image: "https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=400&q=80" }, // 危险警告标志
+            { word: "substances", phonetic: "/ˈsʌbstənsɪz/", pos: "n.", meaning: "物质", example: "toxic substances", image: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&q=80" }, // 化学试剂瓶
+            { word: "auspices", phonetic: "/ˈɔːspɪsɪz/", pos: "n.", meaning: "赞助，主持", example: "under the auspices of...", image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&q=80" }, // 握手/签约 (赞助支持)
+            { word: "historic", phonetic: "/hɪˈstɒrɪk/", pos: "adj.", meaning: "历史性的", example: "a historic moment", image: "https://images.unsplash.com/photo-1461360370896-922624d12aa1?w=400&q=80" }, // 博物馆/古建筑
+            { word: "pesticides", phonetic: "/ˈpestɪsaɪdz/", pos: "n.", meaning: "杀虫剂；农药", example: "harmful pesticides", image: "https://images.unsplash.com/photo-1599420186946-7b6fb4e297f0?w=400&q=80" }, // 农药喷洒
+            { word: "toxic", phonetic: "/ˈtɒksɪk/", pos: "adj.", meaning: "有毒的", example: "toxic chemicals", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=80" }, // 防毒面具/有害环境
+            { word: "degrade", phonetic: "/dɪˈɡreɪd/", pos: "v.", meaning: "降解；退化", example: "does not degrade easily", image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&q=80" } // 垃圾回收/腐烂
+        ],
+        2: [
+            { word: "reef", phonetic: "/riːf/", pos: "n.", meaning: "礁，礁石", example: "the Great Barrier Reef 大堡礁", image: "https://images.unsplash.com/photo-1546026423-cc4642628d2b?w=400&q=80" }, // 水下珊瑚礁
+            { word: "brunt", phonetic: "/brʌnt/", pos: "n.", meaning: "冲击，主要压力", example: "bear the brunt of 承受...", image: "https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=400&q=80" }, // 巨浪拍击岩石
+            { word: "bleaching", phonetic: "/ˈbliːtʃɪŋ/", pos: "n.", meaning: "漂白；白化", example: "coral bleaching 珊瑚白化", image: "https://images.unsplash.com/photo-1582967788606-a171c1080cb0?w=400&q=80" }, // 白化的珊瑚
+            { word: "coral", phonetic: "/ˈkɒrəl/", pos: "n.", meaning: "珊瑚；珊瑚虫", example: "sensitive coral", image: "https://images.unsplash.com/photo-1518467166778-b88f373ffec7?w=400&q=80" }, // 色彩鲜艳的珊瑚
+            { word: "wither", phonetic: "/ˈwɪðə(r)/", pos: "v.", meaning: "枯萎，退化", example: "The coral withered.", image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=400&q=80" }, // 枯树枝/落叶
+            { word: "sedimentation", phonetic: "/ˌsedɪmenˈteɪʃn/", pos: "n.", meaning: "沉积，淤积", example: "heavy sedimentation", image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&q=80" }, // 泥沙沉积的河床
+            { word: "smother", phonetic: "/ˈsmʌðə(r)/", pos: "v.", meaning: "覆盖；使窒息", example: "smothered by seaweed", image: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=400&q=80" }, // 浓雾/厚重云雾覆盖
+            { word: "overgrow", phonetic: "/ˌəʊvəˈɡrəʊ/", pos: "v.", meaning: "蔓生，过度生长", example: "seaweed that overgrew", image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=400&q=80" }, // 爬满墙的藤蔓
+            { word: "inflict", phonetic: "/ɪnˈflɪkt/", pos: "v.", meaning: "使遭受", example: "damage inflicted by...", image: "https://images.unsplash.com/photo-1517420704952-d9f39e95b43e?w=400&q=80" }, // 破碎/废墟 (隐喻伤害)
+            { word: "premier", phonetic: "/ˈpremiə(r)/", pos: "adj.", meaning: "首要的，顶级的", example: "premier tourist attractions", image: "https://images.unsplash.com/photo-1565372195458-9de0b320ef04?w=400&q=80" } // 皇冠/奖杯
+        ]
+    };
+
+    const NEWS_META = {
+        1: { title: "POPs · 持久性污染物", sub: "点击卡片翻转释义 / 点击声波图标听发音" },
+        2: { title: "大堡礁 · 珊瑚白化", sub: "点击卡片翻转释义 / 点击声波图标听发音" }
+    };
+
+    let currentNews = 1;
+    let learnedWords = JSON.parse(localStorage.getItem("learnedWords_v3")) || [];
+    let allGameWords = [...VOCAB[1], ...VOCAB[2]];
+
+    // ================= 基础 UI =================
+    function renderCards(data) {
+        const grid = document.getElementById("cardGrid");
+        grid.innerHTML = "";
+        if (!data.length) {
+            grid.innerHTML = `<p style="grid-column:1/-1; text-align:center; color:var(--muted); padding:40px 0;">未找到匹配项</p>`;
+            return;
+        }
+        data.forEach(item => {
+            const mastered = learnedWords.includes(item.word);
+            const card = document.createElement("div");
+            card.className = "word-card";
+            card.innerHTML = `
+                <div class="word-card-inner">
+                    <div class="word-card-front">
+                        <button class="word-mastery ${mastered ? "is-mastered" : ""}" onclick="toggleMastery(event, '${item.word}')">
+                            ${mastered ? "已掌握" : "标记"}
+                        </button>
+                        <div class="word-main">${item.word}</div>
+                        <div class="word-meta">${item.phonetic} <span class="word-pos">${item.pos}</span></div>
+                        <div class="word-speaker" onclick="speak(event, '${item.word}', this)">
+                            ${ICONS.speaker}
+                        </div>
+                    </div>
+                    <div class="word-card-back">
+                        <div class="word-meaning">${item.meaning}</div>
+                        <div class="word-example">${item.example}</div>
+                    </div>
+                </div>
+            `;
+            card.addEventListener("click", e => {
+                if (e.target.closest("button") || e.target.closest(".word-speaker")) return;
+                card.classList.toggle("flipped");
+            });
+            grid.appendChild(card);
+        });
+    }
+
+    function switchNews(id) {
+        currentNews = id;
+        document.querySelectorAll("[data-news]").forEach(btn => {
+            btn.classList.toggle("active", Number(btn.dataset.news) === id);
+        });
+        document.getElementById("workspaceTitle").textContent = NEWS_META[id].title;
+        document.getElementById("workspaceSub").textContent = NEWS_META[id].sub;
+        document.getElementById("searchInput").value = "";
+        renderCards(VOCAB[id]);
+    }
+
+    function filterCards() {
+        const q = document.getElementById("searchInput").value.trim().toLowerCase();
+        const base = VOCAB[currentNews];
+        if (!q) return renderCards(base);
+        const filtered = base.filter(v => v.word.toLowerCase().includes(q) || v.meaning.includes(q));
+        renderCards(filtered);
+    }
+
+    function toggleMastery(e, word) {
+        e.stopPropagation();
+        const idx = learnedWords.indexOf(word);
+        if (idx > -1) learnedWords.splice(idx, 1);
+        else learnedWords.push(word);
+        localStorage.setItem("learnedWords_v3", JSON.stringify(learnedWords));
+        const q = document.getElementById("searchInput").value.trim();
+        if (q) filterCards(); else renderCards(VOCAB[currentNews]);
+    }
+
+    function speak(e, text, btnEl) {
+        if (e) e.stopPropagation();
+        if (!("speechSynthesis" in window)) return;
+        if (btnEl) {
+            btnEl.classList.add('playing');
+            setTimeout(() => btnEl.classList.remove('playing'), 800);
+        }
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = "en-US"; u.rate = 0.9;
+        speechSynthesis.speak(u);
+    }
+
+    // ================= 模态框基础 =================
+    const overlay = document.getElementById("modalOverlay");
+    const modalContent = document.getElementById("modalContent");
+
+    function openModal(html) {
+        modalContent.innerHTML = html;
+        overlay.classList.add("open");
+    }
+
+    function closeModal() {
+        overlay.classList.remove("open");
+        setTimeout(() => { modalContent.innerHTML = ""; }, 300);
+        if (quizTimer) { clearTimeout(quizTimer); quizTimer = null; }
+        if (imgQuizTimer) { clearTimeout(imgQuizTimer); imgQuizTimer = null; }
+        if (rainAnimation) { cancelAnimationFrame(rainAnimation); rainAnimation = null; }
+    }
+
+    overlay.addEventListener("click", e => { if (e.target === overlay) closeModal(); });
+
+    // ================= 游戏 1：词汇闯关 =================
+    let quizScore = 0;
+    let currentQuiz = null;
+    let quizTimer = null;
+
+    function startQuiz() {
+        quizScore = 0;
+        openModal(`
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-title">词汇闯关</div>
+            <div class="modal-hint">按数字键 1-4 快速作答</div>
+            <div class="quiz-target" id="quizTarget" style="text-align:center; padding:20px 0; font-size:1.4rem; font-weight:bold;"></div>
+            <div id="quizOptions"></div>
+            <div class="quiz-footer">
+                <span>SCORE <span class="quiz-score" id="quizScoreDisplay">0</span></span>
+                <span id="quizFeedback"></span>
+            </div>
+        `);
+        nextQuiz();
+    }
+
+    function nextQuiz() {
+        document.getElementById("quizFeedback").textContent = "";
+        const opts = document.getElementById("quizOptions");
+        opts.innerHTML = "";
+        currentQuiz = allGameWords[Math.floor(Math.random() * allGameWords.length)];
+        document.getElementById("quizTarget").textContent = currentQuiz.meaning;
+
+        const choices = [currentQuiz.word];
+        while (choices.length < 4) {
+            const w = allGameWords[Math.floor(Math.random() * allGameWords.length)].word;
+            if (!choices.includes(w)) choices.push(w);
+        }
+        choices.sort(() => Math.random() - 0.5);
+
+        choices.forEach((c, i) => {
+            const btn = document.createElement("button");
+            btn.className = "game-option";
+            btn.innerHTML = `<span>${c}</span><span class="keycap">${i + 1}</span>`;
+            btn.onclick = () => answerQuiz(btn, c);
+            opts.appendChild(btn);
+        });
+    }
+
+    function answerQuiz(btn, chosen) {
+        document.querySelectorAll(".game-option").forEach(b => b.disabled = true);
+        if (chosen === currentQuiz.word) {
+            btn.classList.add("correct");
+            document.getElementById("quizFeedback").textContent = "CORRECT";
+            document.getElementById("quizFeedback").style.color = "var(--success)";
+            quizScore += 10;
+            document.getElementById("quizScoreDisplay").textContent = quizScore;
+            speak(null, chosen);
+        } else {
+            btn.classList.add("wrong");
+            document.getElementById("quizFeedback").textContent = `ANSWER: ${currentQuiz.word}`;
+            document.getElementById("quizFeedback").style.color = "var(--danger)";
+            document.querySelectorAll(".game-option").forEach(b => {
+                if (b.querySelector("span").textContent === currentQuiz.word) b.classList.add("correct");
+            });
+        }
+        quizTimer = setTimeout(nextQuiz, 1800);
+    }
+
+    // ================= 游戏 2：识图辨词 (严格过滤与提示) =================
+    let imageQuizScore = 0;
+    let currentImageQuiz = null;
+    let imgQuizTimer = null;
+
+    function startImageQuiz() {
+        imageQuizScore = 0;
+        openModal(`
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-title">识图辨词</div>
+            <div class="modal-hint">根据图像选择正确的英文单词</div>
+            <div class="image-quiz-container">
+                <div class="image-display-box" id="imageTarget">
+                    <!-- 骨架屏 -->
+                    <div style="width:100%; height:100%; display:flex; justify-content:center; align-items:center; background:#e5e5ea;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b0b0b5" stroke-width="2" stroke-linecap="round" class="spinner"><circle cx="12" cy="12" r="10"/><path d="M12 2v4"/></svg>
+                    </div>
+                </div>
+                <!-- 拼写提示 -->
+                <div class="spell-hint-area" id="spellHint"></div>
+            </div>
+            <div id="imageQuizOptions"></div>
+            
+            <div class="meaning-panel" id="imgQuizMeaning"></div>
+            
+            <div class="quiz-footer">
+                <span>SCORE <span class="quiz-score" id="imgScoreDisplay">0</span></span>
+                <span id="imgQuizFeedback"></span>
+            </div>
+        `);
+        nextImageQuiz();
+    }
+
+    function nextImageQuiz() {
+        document.getElementById("imgQuizFeedback").textContent = "";
+        document.getElementById("imgQuizMeaning").classList.remove("show");
+        const opts = document.getElementById("imageQuizOptions");
+        opts.innerHTML = "";
+        
+        // 过滤掉没有图片的词汇，保证识图游戏的质量
+        const validWords = allGameWords.filter(w => w.image);
+        currentImageQuiz = validWords[Math.floor(Math.random() * validWords.length)];
+        
+        // 渲染图片与骨架屏动画
+        const imgBox = document.getElementById("imageTarget");
+        imgBox.innerHTML = `
+            <div style="width:100%; height:100%; display:flex; justify-content:center; align-items:center; background:#e5e5ea; position:absolute; inset:0; z-index:1;" id="imgLoading">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b0b0b5" stroke-width="2" stroke-linecap="round" class="spinner"><circle cx="12" cy="12" r="10"/><path d="M12 2v4"/></svg>
+            </div>
+            <img src="${currentImageQuiz.image}" alt="${currentImageQuiz.word}" 
+                 onload="document.getElementById('imgLoading').style.display='none'; this.classList.add('loaded');"
+                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlZWVlZWUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNmMGYwZjUiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM4ZThlOTMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5JbWFnZSBub3QgZm91bmQ8L3RleHQ+PC9zdmc+'; document.getElementById('imgLoading').style.display='none'; this.classList.add('loaded');">
+        `;
+
+        // 渲染拼写提示 (下划线数量 = 单词长度)
+        const hintArea = document.getElementById("spellHint");
+        hintArea.innerHTML = "";
+        for (let i = 0; i < currentImageQuiz.word.length; i++) {
+            const dash = document.createElement("div");
+            dash.className = "spell-hint-dash";
+            hintArea.appendChild(dash);
+        }
+
+        // 生成选项
+        const choices = [currentImageQuiz.word];
+        while (choices.length < 4) {
+            const w = validWords[Math.floor(Math.random() * validWords.length)].word;
+            if (!choices.includes(w)) choices.push(w);
+        }
+        choices.sort(() => Math.random() - 0.5);
+
+        choices.forEach((c, i) => {
+            const btn = document.createElement("button");
+            btn.className = "game-option";
+            btn.innerHTML = `<span>${c}</span><span class="keycap">${i + 1}</span>`;
+            btn.onclick = () => answerImageQuiz(btn, c);
+            opts.appendChild(btn);
+        });
+    }
+
+    function answerImageQuiz(btn, chosen) {
+        document.querySelectorAll("#imageQuizOptions .game-option").forEach(b => b.disabled = true);
+        
+        const isCorrect = (chosen === currentImageQuiz.word);
+        const targetWordData = isCorrect ? currentImageQuiz : allGameWords.find(w => w.word === currentImageQuiz.word);
+
+        if (isCorrect) {
+            btn.classList.add("correct");
+            document.getElementById("imgQuizFeedback").textContent = "CORRECT";
+            document.getElementById("imgQuizFeedback").style.color = "var(--success)";
+            imageQuizScore += 10;
+            document.getElementById("imgScoreDisplay").textContent = imageQuizScore;
+            speak(null, chosen);
+        } else {
+            btn.classList.add("wrong");
+            document.getElementById("imgQuizFeedback").textContent = "WRONG";
+            document.getElementById("imgQuizFeedback").style.color = "var(--danger)";
+            document.querySelectorAll("#imageQuizOptions .game-option").forEach(b => {
+                if (b.querySelector("span").textContent === currentImageQuiz.word) b.classList.add("correct");
+            });
+            speak(null, currentImageQuiz.word);
+        }
+
+        // 填充并展开释义面板
+        const meaningPanel = document.getElementById("imgQuizMeaning");
+        meaningPanel.innerHTML = `
+            <div class="mp-word">${targetWordData.word}</div>
+            <div class="mp-meta">${targetWordData.phonetic} <span class="word-pos">${targetWordData.pos}</span></div>
+            <div class="mp-meaning">${targetWordData.meaning}</div>
+            <div class="mp-example">${targetWordData.example}</div>
+        `;
+        meaningPanel.classList.add("show");
+
+        // 延迟 3.5 秒后自动跳转下一题
+        imgQuizTimer = setTimeout(() => {
+            meaningPanel.classList.remove("show");
+            setTimeout(nextImageQuiz, 300);
+        }, 3500);
+    }
+
+    // ================= 游戏 3：拼写挑战 =================
+    let spellWord = "";
+    let spellPicked = [];
+    let spellPool = [];
+
+    function startSpelling() {
+        openModal(`
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-title">拼写挑战</div>
+            <div class="modal-hint">点击字母完成拼写</div>
+            <div class="spell-target" id="spellTarget"></div>
+            <div style="text-align:center;margin-bottom:20px;">
+                <button onclick="speak(null, spellWord)" style="display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:20px;background:var(--accent-soft);color:var(--accent);font-weight:600;font-size:0.85rem;transition:all 0.2s;">
+                    ${ICONS.speaker} 听发音
+                </button>
+            </div>
+            <div class="spell-answer-row" id="spellAnswer"></div>
+            <div class="spell-pool" id="spellPool"></div>
+            <div class="spell-feedback" id="spellFeedback"></div>
+        `);
+        newSpellRound();
+    }
+
+    function newSpellRound() {
+        const valid = allGameWords.filter(w => !w.word.includes(" ") && !w.word.includes("-") && w.word.length <= 10);
+        const item = valid[Math.floor(Math.random() * valid.length)];
+        spellWord = item.word.toLowerCase();
+        document.getElementById("spellTarget").innerHTML = `${item.meaning} <span style="color:var(--muted);font-size:0.85rem;font-weight:400;font-family:'SF Mono',monospace;">(${item.pos})</span>`;
+        document.getElementById("spellFeedback").textContent = "";
+
+        spellPicked = [];
+        spellPool = spellWord.split("");
+        if (spellPool.length < 6) {
+            const extra = "abcdefghijklmnopqrstuvwxyz".split("").sort(() => Math.random() - 0.5).slice(0, 3);
+            spellPool = spellPool.concat(extra);
+        }
+        spellPool.sort(() => Math.random() - 0.5);
+        renderSpell();
+        speak(null, spellWord);
+    }
+
+    function renderSpell() {
+        const ans = document.getElementById("spellAnswer");
+        const pool = document.getElementById("spellPool");
+        ans.innerHTML = ""; pool.innerHTML = "";
+
+        for (let i = 0; i < spellWord.length; i++) {
+            const tile = document.createElement("div");
+            tile.className = "spell-tile" + (spellPicked[i] ? "" : " placeholder");
+            if (spellPicked[i]) {
+                tile.textContent = spellPicked[i];
+                tile.onclick = () => unPickSpell(i);
+            }
+            ans.appendChild(tile);
+        }
+
+        spellPool.forEach((ch, i) => {
+            const tile = document.createElement("div");
+            tile.className = "spell-tile";
+            tile.textContent = ch;
+            tile.onclick = () => pickSpell(i);
+            pool.appendChild(tile);
+        });
+    }
+
+    function pickSpell(i) {
+        if (spellPicked.length >= spellWord.length) return;
+        spellPicked.push(spellPool[i]);
+        spellPool.splice(i, 1);
+        renderSpell();
+        checkSpell();
+    }
+
+    function unPickSpell(i) {
+        spellPool.push(spellPicked[i]);
+        spellPicked.splice(i, 1);
+        renderSpell();
+    }
+
+    function checkSpell() {
+        if (spellPicked.length !== spellWord.length) return;
+        const fb = document.getElementById("spellFeedback");
+        if (spellPicked.join("") === spellWord) {
+            fb.textContent = "CORRECT";
+            fb.style.color = "var(--success)";
+            speak(null, spellWord);
+            setTimeout(newSpellRound, 1600);
+        } else {
+            fb.textContent = "TRY AGAIN";
+            fb.style.color = "var(--danger)";
+            setTimeout(() => {
+                spellPool = spellPool.concat(spellPicked);
+                spellPool.sort(() => Math.random() - 0.5);
+                spellPicked = [];
+                renderSpell();
+                fb.textContent = "";
+            }, 1200);
+        }
+    }
+
+    // ================= 游戏 4：单词雨 =================
+    let rainAnimation = null;
+    let rainWords = [];
+    let rainScore = 0;
+    let rainLives = 3;
+    let rainTarget = null;
+    let rainLastSpawn = 0;
+    let rainInterval = 1600;
+    let rainSpeed = 1.2;
+
+    function startRain() {
+        openModal(`
+            <div class="rain-modal" style="display:flex;flex-direction:column;">
+                <div class="rain-topbar">
+                    <span>LIVES <span id="rainLivesDisplay" style="color:var(--danger);">3</span></span>
+                    <span>SCORE <span id="rainScoreDisplay" style="color:var(--accent);">0</span></span>
+                    <button class="modal-close" style="position:static;font-size:1.3rem;" onclick="closeModal()">&times;</button>
+                </div>
+                <div class="rain-target-bar">FIND: <span id="rainTargetText"></span></div>
+                <div class="rain-stage" id="rainStage"></div>
+            </div>
+        `);
+        initRain();
+    }
+
+    function initRain() {
+        rainScore = 0; rainLives = 3; rainSpeed = 1.2; rainInterval = 1600; rainWords = []; rainLastSpawn = 0;
+        document.getElementById("rainScoreDisplay").textContent = "0";
+        document.getElementById("rainLivesDisplay").textContent = "3";
+        document.getElementById("rainStage").innerHTML = "";
+        pickRainTarget();
+
+        let last = performance.now();
+        function loop(now) {
+            const dt = now - last; last = now;
+            updateRain(dt);
+            if (rainLives > 0 && overlay.classList.contains("open")) {
+                rainAnimation = requestAnimationFrame(loop);
+            }
+        }
+        rainAnimation = requestAnimationFrame(loop);
+    }
+
+    function pickRainTarget() {
+        rainTarget = allGameWords[Math.floor(Math.random() * allGameWords.length)];
+        document.getElementById("rainTargetText").textContent = rainTarget.meaning;
+    }
+
+    function spawnRainWord() {
+        const stage = document.getElementById("rainStage");
+        const w = stage.offsetWidth;
+        const isTarget = Math.random() < 0.35;
+        let item = isTarget ? rainTarget : allGameWords[Math.floor(Math.random() * allGameWords.length)];
+        if (!isTarget && item.word === rainTarget.word) {
+            item = allGameWords[Math.floor(Math.random() * allGameWords.length)];
+        }
+
+        const el = document.createElement("div");
+        el.className = "falling-word";
+        el.textContent = item.word;
+        el.style.left = Math.max(8, Math.random() * (w - 130)) + "px";
+        el.style.top = "-48px";
+        el.onclick = () => clickRainWord(el, item);
+
+        stage.appendChild(el);
+        rainWords.push({ el, y: -48, correct: item.word === rainTarget.word, word: item.word });
+    }
+
+    function clickRainWord(el, item) {
+        if (el.dataset.done) return;
+        el.dataset.done = "1";
+        if (item.word === rainTarget.word) {
+            el.style.background = "var(--success)"; el.style.color = "#fff"; el.style.borderColor = "var(--success)";
+            rainScore += 10;
+            document.getElementById("rainScoreDisplay").textContent = rainScore;
+            speak(null, item.word);
+            if (rainScore % 50 === 0) { rainSpeed += 0.25; rainInterval = Math.max(650, rainInterval - 100); }
+            setTimeout(() => el.remove(), 200);
+            rainWords = rainWords.filter(x => x.el !== el);
+            setTimeout(() => {
+                if (overlay.classList.contains("open")) {
+                    document.querySelectorAll("#rainStage .falling-word").forEach(x => x.remove());
+                    rainWords = [];
+                    pickRainTarget();
+                }
+            }, 250);
+        } else {
+            el.style.background = "var(--danger)"; el.style.color = "#fff"; el.style.borderColor = "var(--danger)";
+            loseRainLife();
+            setTimeout(() => { el.remove(); rainWords = rainWords.filter(x => x.el !== el); }, 250);
+        }
+    }
+
+    function loseRainLife() {
+        rainLives--;
+        document.getElementById("rainLivesDisplay").textContent = Math.max(0, rainLives);
+        if (rainLives <= 0) {
+            cancelAnimationFrame(rainAnimation);
+            setTimeout(() => { alert(`游戏结束。最终得分: ${rainScore}`); closeModal(); }, 150);
+        }
+    }
+
+    function updateRain(dt) {
+        const stage = document.getElementById("rainStage");
+        if (!stage) return;
+        const h = stage.offsetHeight;
+        if (performance.now() - rainLastSpawn > rainInterval) {
+            spawnRainWord(); rainLastSpawn = performance.now();
+        }
+        for (let i = rainWords.length - 1; i >= 0; i--) {
+            const r = rainWords[i];
+            if (r.el.dataset.done) continue;
+            r.y += (rainSpeed * dt) / 16;
+            r.el.style.top = r.y + "px";
+            if (r.y > h) {
+                if (r.correct) loseRainLife();
+                r.el.remove(); rainWords.splice(i, 1);
+            }
+        }
+    }
+
+    // ================= 键盘快捷键 =================
+    document.addEventListener("keydown", e => {
+        if (e.target.tagName === "INPUT") return;
+        if (e.key === "Escape") { closeModal(); return; }
+
+        if (["1", "2", "3", "4"].includes(e.key) && overlay.classList.contains("open")) {
+            let opts = document.querySelectorAll("#quizOptions .game-option");
+            if (opts.length > 0) {
+                const idx = Number(e.key) - 1;
+                if (opts[idx] && !opts[idx].disabled) opts[idx].click();
+            }
+            let imgOpts = document.querySelectorAll("#imageQuizOptions .game-option");
+            if (imgOpts.length > 0) {
+                const idx = Number(e.key) - 1;
+                if (imgOpts[idx] && !imgOpts[idx].disabled) imgOpts[idx].click();
+            }
+        }
+
+        if (e.code === "Space") {
+            const hovered = document.querySelector(".word-card:hover");
+            if (hovered) { e.preventDefault(); hovered.classList.toggle("flipped"); }
+        }
+    });
+
+    // ================= 初始化 =================
+    renderCards(VOCAB[1]);
+</script>
+</body>
+</html>
